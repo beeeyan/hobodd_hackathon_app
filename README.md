@@ -57,7 +57,13 @@ $ ./change_package_name.sh com.example.app
 処理が終わったら`change_package_name.sh`は消しておいてもいいかと思う。  
   
 ## Flutterバージョン
-Flutterのバージョンを変更したい場合は[fvm_config.json](.fvm/fvm_config.json)を変更する。  
+FVMが使用しているFlutterのバージョンは[.fvmrc](.fvmrc)に記載されている。  
+Flutterのバージョンを変更したい場合は`fvm use`コマンドを使用する。  
+'''
+# 例
+$ fvm use stable
+$ fvm use 3.16.4
+'''
 
 ## Githubの設定
 
@@ -177,8 +183,9 @@ VSCode用の設定は追加済みである。
 
 - バージョン管理ツール : [FVM](https://fvm.app/)
     - FVMのインストール・設定については、[こちらの記事](https://zenn.dev/riscait/articles/flutter-version-management)が参考になります。
+    - FVMの3系を利用しています。[こちらの記事](https://zenn.dev/altiveinc/articles/flutter-version-management-3)を参考ください。
     - ※ 私は`Homebrew`でインストールしています。
-- 使用しているバージョンは .fvm/fvm_config.json に記載されています。
+- 使用しているバージョンは [.fvmrc](.fvmrc) に記載されています。
 - FVMのインストール後、以下の流れで環境構築を実施。
     - プロジェクトのルートディレクトリで、`fvm flutter --version`を実行すると、ローカル環境に該当のバージョンがなければインストールされる。
     - VSCode の場合
