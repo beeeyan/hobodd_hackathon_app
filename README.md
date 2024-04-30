@@ -165,6 +165,15 @@ https://github.com/KosukeSaigusa/flutterfire-commons/tree/main/packages/routing_
 また[base_response_data](./lib/api/model/base_response_data/base_response_data.dart)は要件によって変えた方がいいかもしれない。  
 ※ 現状そのままmainにデータ入れている。「参考」の実装などでは「message」はどのAPIでも存在する想定で作成されている。
 
+### PrivateManifestの設定
+
+shared_preferencesはほぼほぼ利用する想定で、以下のみデフォルトで追加している。  
+※ 必要なければ消す・適宜アプリごとに必要な設定を追加すること。
+Privacy Accessed API Type : User Defaults  
+Privacy Accessed API Reasons : CA92.1
+  
+[参考](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api/#4278401)
+
 以下README雛形
 
 ----------------------------------
