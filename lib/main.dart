@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'enum/flavor.dart';
 import 'util/logger.dart';
 
 void main() {
   // Flavor を取得し Logging
-  const flavor = String.fromEnvironment('FLAVOR');
-  logger.i('FLAVOR : $flavor');
+  logger.i('FLAVOR : ${flavor.name}');
 
   runApp(const MyApp());
 }
