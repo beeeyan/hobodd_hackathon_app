@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'enum/flavor.dart';
+import 'gen/fonts.gen.dart';
 import 'util/logger.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: FontFamily.notoSansJP,
       ),
       // アプリ内文字サイズを固定（本体設定の影響を受けない）
       builder: (context, child) => MediaQuery.withNoTextScaling(child: child!),

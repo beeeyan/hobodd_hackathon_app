@@ -1,12 +1,12 @@
 name: app
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
   connectivity_plus: ^6.0.3
@@ -29,5 +29,20 @@ dev_dependencies:
   pedantic_mono: any
 
 flutter:
-
   uses-material-design: true
+
+  fonts:
+    - family: NotoSansJP
+      fonts:
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Thin.otf
+          weight: 100
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Light.otf
+          weight: 300
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Black.otf
+          weight: 900
