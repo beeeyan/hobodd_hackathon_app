@@ -9,7 +9,7 @@
 
 プロジェクトは以下で作成している。  
 ※fvm前提  
-※大本はFlutterバージョン「3.7.12」で作成
+※大本はFlutterバージョン「3.19.3」で作成
 
 ```console
 $ fvm use stable --force
