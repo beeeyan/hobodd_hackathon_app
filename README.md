@@ -9,7 +9,7 @@
 
 プロジェクトは以下で作成している。  
 ※fvm前提  
-※大本はFlutterバージョン「3.19.3」で作成
+※大本はFlutterバージョン「3.24.1」で作成
 
 ```console
 $ fvm use stable --force
@@ -62,7 +62,7 @@ Flutterのバージョンを変更したい場合は`fvm use`コマンドを使�
 '''
 # 例
 $ fvm use stable
-$ fvm use 3.16.4
+$ fvm use 3.24.1
 '''
 
 ## Githubの設定
