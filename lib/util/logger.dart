@@ -1,5 +1,5 @@
-import 'package:logger/logger.dart';
+import 'package:roggle/roggle.dart';
 
-// 参考（https://pub.dev/packages/logger）
+// 参考（https://pub.dev/packages/roggle）
 // 共通のインスタンスを利用
-final logger = Logger();
+final logger = Roggle();
