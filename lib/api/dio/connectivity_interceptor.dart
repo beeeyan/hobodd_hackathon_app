@@ -1,4 +1,3 @@
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 
@@ -20,13 +19,12 @@ class ConnectivityInterceptor extends Interceptor {
     }
     return handler.next(options);
   }
-
 }
 
 /// インターネットに接続しているかどうか
 Future<bool> get _isNetworkConnected async {
-  final result = await Connectivity().checkConnectivity();
-  return result != ConnectivityResult.none;
+  final results = await Connectivity().checkConnectivity();
+  return !results.contains(ConnectivityResult.none);
 }
 
 /// HTTP 通信でのエラーの種別の列挙
