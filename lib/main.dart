@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'enum/flavor.dart';
@@ -23,15 +24,23 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp.router(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: FontFamily.notoSansJP,
-      ),
-      // アプリ内文字サイズを固定（本体設定の影響を受けない）
-      builder: (context, child) => MediaQuery.withNoTextScaling(child: child!),
-      routerConfig: ref.watch(goRouterProvider),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp.router(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            fontFamily: FontFamily.notoSansJP,
+          ),
+          // アプリ内文字サイズを固定（本体設定の影響を受けない）
+          builder: (context, child) =>
+              MediaQuery.withNoTextScaling(child: child!),
+          routerConfig: ref.watch(goRouterProvider),
+        );
+      },
     );
   }
 }
