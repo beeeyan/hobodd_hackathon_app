@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'config/theme.dart';
 import 'enum/flavor.dart';
-import 'gen/fonts.gen.dart';
 import 'routing/go_router.dart';
 import 'util/logger.dart';
 
@@ -31,10 +31,7 @@ class MyApp extends ConsumerWidget {
       builder: (context, child) {
         return MaterialApp.router(
           title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            fontFamily: FontFamily.notoSansJP,
-          ),
+          theme: lightTheme(),
           // アプリ内文字サイズを固定（本体設定の影響を受けない）
           builder: (context, child) =>
               MediaQuery.withNoTextScaling(child: child!),
