@@ -6,6 +6,7 @@ import 'package:intersperse/intersperse.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../common_widget/textform/custom_textform.dart';
+import '../../../util/formatter/date_time_formatter.dart';
 import 'anniversary_list_notifier.dart';
 
 class AnniversaryList extends ConsumerWidget {
@@ -119,16 +120,6 @@ class _AnniversaryListTile extends ConsumerWidget {
   final DateTime anniversaryDate;
   final String message;
 
-  // anniversaryDate を 'yyyy/MM/dd' にフォーマットする
-  String get formattedAnniversaryDate {
-    return '${anniversaryDate.year}/${anniversaryDate.month}/${anniversaryDate.day}';
-  }
-
-  // anniversaryDate を 'MM/dd' にフォーマットする
-  String get formattedAnniversaryDateShort {
-    return '${anniversaryDate.month}/${anniversaryDate.day}';
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final aniversaryListNotifier = ref.watch(
@@ -136,6 +127,7 @@ class _AnniversaryListTile extends ConsumerWidget {
     );
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
+    final dateYyyyMmDd = anniversaryDate.toMMddSeparatedBySlashLong();
 
     return ListTile(
       leading: Container(
@@ -147,13 +139,13 @@ class _AnniversaryListTile extends ConsumerWidget {
         ),
         child: Center(
           child: Text(
-            formattedAnniversaryDateShort,
+            anniversaryDate.toMMddSeparatedBySlash(),
             style: textTheme.titleMedium,
           ),
         ),
       ),
       title: Text(anniversaryName),
-      subtitle: Text('$formattedAnniversaryDate $message'),
+      subtitle: Text('$dateYyyyMmDd $message'),
       onTap: () async {
         await showDialog(
           context: context,
