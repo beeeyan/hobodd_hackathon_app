@@ -87,7 +87,6 @@ class AnniversaryList extends ConsumerWidget {
                           children: [
                             OutlinedButton(
                               onPressed: () {
-                                // TODO(hott3): 記念日を作成に必要なデータを渡す
                                 Navigator.of(context).pop();
                               },
                               child: const Text('作成'),
