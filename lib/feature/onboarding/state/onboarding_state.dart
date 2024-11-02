@@ -6,6 +6,7 @@ part 'onboarding_state.g.dart';
 @freezed
 class OnboardingState with _$OnboardingState {
   const factory OnboardingState({
+    @Default('') String userName,
     @Default('') String calenderName,
   }) = _OnboardingState;
 
