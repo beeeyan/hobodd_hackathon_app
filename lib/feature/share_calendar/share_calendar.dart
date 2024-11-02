@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../config/theme/theme_extension.dart';
+import '../../config/theme/theme_extension.dart';
 
-class Sample1Page extends StatelessWidget {
-  const Sample1Page({super.key});
+class ShareCalendarPage extends StatelessWidget {
+  const ShareCalendarPage({super.key});
 
-  static const String name = 'sample1';
-  static const String path = '/sample1';
+  static const String name = 'share_calendar';
+  static const String path = '/share_calendar';
 
   @override
   Widget build(BuildContext context) {

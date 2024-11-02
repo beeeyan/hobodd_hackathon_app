@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
 import '../feature/root.dart';
-import '../feature/sample1.dart';
+import '../feature/share_calendar/share_calendar.dart';
 import 'no_animation_transition.dart';
 import 'turn_page_animation_transition.dart';
 
@@ -40,10 +40,10 @@ final goRouterProvider = Provider<GoRouter>(
                     ),
             ),
             GoRoute(
-              path: Sample1Page.path,
-              name: Sample1Page.name,
+              path: ShareCalendarPage.path,
+              name: ShareCalendarPage.name,
               pageBuilder: (context, state) => buildNoAnimationTransition(
-                const Sample1Page(),
+                const ShareCalendarPage(),
               ),
             ),
           ],
