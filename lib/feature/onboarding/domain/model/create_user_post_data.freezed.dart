@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'onboarding_state.dart';
+part of 'create_user_post_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,45 +14,49 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-OnboardingState _$OnboardingStateFromJson(Map<String, dynamic> json) {
-  return _OnboardingState.fromJson(json);
+CreateUserPostData _$CreateUserPostDataFromJson(Map<String, dynamic> json) {
+  return _CreateUserPostData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OnboardingState {
+mixin _$CreateUserPostData {
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'roomName')
   String get roomName => throw _privateConstructorUsedError;
 
-  /// Serializes this OnboardingState to a JSON map.
+  /// Serializes this CreateUserPostData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of OnboardingState
+  /// Create a copy of CreateUserPostData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OnboardingStateCopyWith<OnboardingState> get copyWith =>
+  $CreateUserPostDataCopyWith<CreateUserPostData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OnboardingStateCopyWith<$Res> {
-  factory $OnboardingStateCopyWith(
-          OnboardingState value, $Res Function(OnboardingState) then) =
-      _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
+abstract class $CreateUserPostDataCopyWith<$Res> {
+  factory $CreateUserPostDataCopyWith(
+          CreateUserPostData value, $Res Function(CreateUserPostData) then) =
+      _$CreateUserPostDataCopyWithImpl<$Res, CreateUserPostData>;
   @useResult
-  $Res call({String name, String roomName});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'roomName') String roomName});
 }
 
 /// @nodoc
-class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
-    implements $OnboardingStateCopyWith<$Res> {
-  _$OnboardingStateCopyWithImpl(this._value, this._then);
+class _$CreateUserPostDataCopyWithImpl<$Res, $Val extends CreateUserPostData>
+    implements $CreateUserPostDataCopyWith<$Res> {
+  _$CreateUserPostDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OnboardingState
+  /// Create a copy of CreateUserPostData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -74,25 +78,27 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
 }
 
 /// @nodoc
-abstract class _$$OnboardingStateImplCopyWith<$Res>
-    implements $OnboardingStateCopyWith<$Res> {
-  factory _$$OnboardingStateImplCopyWith(_$OnboardingStateImpl value,
-          $Res Function(_$OnboardingStateImpl) then) =
-      __$$OnboardingStateImplCopyWithImpl<$Res>;
+abstract class _$$CreateUserPostDataImplCopyWith<$Res>
+    implements $CreateUserPostDataCopyWith<$Res> {
+  factory _$$CreateUserPostDataImplCopyWith(_$CreateUserPostDataImpl value,
+          $Res Function(_$CreateUserPostDataImpl) then) =
+      __$$CreateUserPostDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String roomName});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'roomName') String roomName});
 }
 
 /// @nodoc
-class __$$OnboardingStateImplCopyWithImpl<$Res>
-    extends _$OnboardingStateCopyWithImpl<$Res, _$OnboardingStateImpl>
-    implements _$$OnboardingStateImplCopyWith<$Res> {
-  __$$OnboardingStateImplCopyWithImpl(
-      _$OnboardingStateImpl _value, $Res Function(_$OnboardingStateImpl) _then)
+class __$$CreateUserPostDataImplCopyWithImpl<$Res>
+    extends _$CreateUserPostDataCopyWithImpl<$Res, _$CreateUserPostDataImpl>
+    implements _$$CreateUserPostDataImplCopyWith<$Res> {
+  __$$CreateUserPostDataImplCopyWithImpl(_$CreateUserPostDataImpl _value,
+      $Res Function(_$CreateUserPostDataImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OnboardingState
+  /// Create a copy of CreateUserPostData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -100,7 +106,7 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
     Object? name = null,
     Object? roomName = null,
   }) {
-    return _then(_$OnboardingStateImpl(
+    return _then(_$CreateUserPostDataImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -115,29 +121,31 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OnboardingStateImpl implements _OnboardingState {
-  const _$OnboardingStateImpl({this.name = '', this.roomName = ''});
+class _$CreateUserPostDataImpl implements _CreateUserPostData {
+  const _$CreateUserPostDataImpl(
+      {@JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'roomName') required this.roomName});
 
-  factory _$OnboardingStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OnboardingStateImplFromJson(json);
+  factory _$CreateUserPostDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreateUserPostDataImplFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: 'name')
   final String name;
   @override
-  @JsonKey()
+  @JsonKey(name: 'roomName')
   final String roomName;
 
   @override
   String toString() {
-    return 'OnboardingState(name: $name, roomName: $roomName)';
+    return 'CreateUserPostData(name: $name, roomName: $roomName)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OnboardingStateImpl &&
+            other is _$CreateUserPostDataImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.roomName, roomName) ||
                 other.roomName == roomName));
@@ -147,39 +155,43 @@ class _$OnboardingStateImpl implements _OnboardingState {
   @override
   int get hashCode => Object.hash(runtimeType, name, roomName);
 
-  /// Create a copy of OnboardingState
+  /// Create a copy of CreateUserPostData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
-      __$$OnboardingStateImplCopyWithImpl<_$OnboardingStateImpl>(
+  _$$CreateUserPostDataImplCopyWith<_$CreateUserPostDataImpl> get copyWith =>
+      __$$CreateUserPostDataImplCopyWithImpl<_$CreateUserPostDataImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OnboardingStateImplToJson(
+    return _$$CreateUserPostDataImplToJson(
       this,
     );
   }
 }
 
-abstract class _OnboardingState implements OnboardingState {
-  const factory _OnboardingState({final String name, final String roomName}) =
-      _$OnboardingStateImpl;
+abstract class _CreateUserPostData implements CreateUserPostData {
+  const factory _CreateUserPostData(
+          {@JsonKey(name: 'name') required final String name,
+          @JsonKey(name: 'roomName') required final String roomName}) =
+      _$CreateUserPostDataImpl;
 
-  factory _OnboardingState.fromJson(Map<String, dynamic> json) =
-      _$OnboardingStateImpl.fromJson;
+  factory _CreateUserPostData.fromJson(Map<String, dynamic> json) =
+      _$CreateUserPostDataImpl.fromJson;
 
   @override
+  @JsonKey(name: 'name')
   String get name;
   @override
+  @JsonKey(name: 'roomName')
   String get roomName;
 
-  /// Create a copy of OnboardingState
+  /// Create a copy of CreateUserPostData
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
+  _$$CreateUserPostDataImplCopyWith<_$CreateUserPostDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
