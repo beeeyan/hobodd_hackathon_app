@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../common_widget/button/primary.button.dart';
 import '../../common_widget/dialog/primary_dialog.dart';
 import '../../common_widget/textform/custom_textform.dart';
-import '../../config/theme_extension.dart';
+import '../../config/theme/theme_extension.dart';
 import 'onboarding_notifier.dart';
 
 class OnboardingPage extends ConsumerWidget {

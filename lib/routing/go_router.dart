@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../feature/home/home.dart';
+import '../feature/calendar/presentation/calendar.dart';
 import '../feature/onboarding/onboarding.dart';
 import '../feature/root.dart';
 import '../feature/sample2.dart';
 import 'no_animation_transition.dart';
+import 'turn_page_animation_transition.dart';
 
 final rootNavigatorKeyProvider = Provider(
   (ref) => GlobalKey<NavigatorState>(debugLabel: 'root'),
@@ -29,11 +30,15 @@ final goRouterProvider = Provider<GoRouter>(
           builder: (context, state, child) => RootPage(child: child),
           routes: [
             GoRoute(
-              path: MyHomePage.path,
-              name: MyHomePage.name,
-              pageBuilder: (context, state) => buildNoAnimationTransition(
-                const MyHomePage(),
-              ),
+              path: CalendarPage.path,
+              name: CalendarPage.name,
+              pageBuilder: (context, state) => state.extra == null
+                  ? buildNoAnimationTransition(
+                      const CalendarPage(),
+                    )
+                  : buildTurnPageAnimationTransition(
+                      CalendarPage(date: state.extra! as DateTime),
+                    ),
             ),
             GoRoute(
               path: Sample2Page.path,
