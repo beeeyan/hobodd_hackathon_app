@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
 import '../feature/root.dart';
-import '../feature/share_calendar/share_calendar.dart';
+import '../feature/share_calendar/presentation/share_calendar.dart';
 import 'no_animation_transition.dart';
 import 'turn_page_animation_transition.dart';
 

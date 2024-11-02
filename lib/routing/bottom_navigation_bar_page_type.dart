@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
-import '../feature/share_calendar/share_calendar.dart';
+import '../feature/share_calendar/presentation/share_calendar.dart';
 
 enum BottomNavigationBarPageType {
   calendar(
