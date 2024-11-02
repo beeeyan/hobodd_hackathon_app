@@ -6,8 +6,8 @@ part 'onboarding_state.g.dart';
 @freezed
 class OnboardingState with _$OnboardingState {
   const factory OnboardingState({
-    @Default('') String userName,
-    @Default('') String calenderName,
+    @Default('') String name,
+    @Default('') String roomName,
   }) = _OnboardingState;
 
   factory OnboardingState.fromJson(Map<String, dynamic> json) =>

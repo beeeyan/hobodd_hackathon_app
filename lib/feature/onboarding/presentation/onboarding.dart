@@ -63,7 +63,7 @@ class OnboardingPage extends ConsumerWidget {
                                 : null,
                           ),
                           buttonLabel: '作成',
-                          onPressed: () {},
+                          onPressed: onboardingNotifier.save,
                         ),
                       ),
                       const Expanded(child: SizedBox()),
@@ -95,7 +95,7 @@ class OnboardingPage extends ConsumerWidget {
                                   : null,
                             ),
                             buttonLabel: '参加',
-                            onPressed: () {},
+                            onPressed: onboardingNotifier.save,
                           );
                         },
                       ),

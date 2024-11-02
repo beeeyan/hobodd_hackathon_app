@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
-import '../feature/onboarding/onboarding.dart';
+import '../feature/onboarding/presentation/onboarding.dart';
 import '../feature/root.dart';
 import '../feature/sample2.dart';
 import 'no_animation_transition.dart';

@@ -20,8 +20,8 @@ OnboardingState _$OnboardingStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OnboardingState {
-  String get userName => throw _privateConstructorUsedError;
-  String get calenderName => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get roomName => throw _privateConstructorUsedError;
 
   /// Serializes this OnboardingState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $OnboardingStateCopyWith<$Res> {
           OnboardingState value, $Res Function(OnboardingState) then) =
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
-  $Res call({String userName, String calenderName});
+  $Res call({String name, String roomName});
 }
 
 /// @nodoc
@@ -57,17 +57,17 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = null,
-    Object? calenderName = null,
+    Object? name = null,
+    Object? roomName = null,
   }) {
     return _then(_value.copyWith(
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      calenderName: null == calenderName
-          ? _value.calenderName
-          : calenderName // ignore: cast_nullable_to_non_nullable
+      roomName: null == roomName
+          ? _value.roomName
+          : roomName // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -81,7 +81,7 @@ abstract class _$$OnboardingStateImplCopyWith<$Res>
       __$$OnboardingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userName, String calenderName});
+  $Res call({String name, String roomName});
 }
 
 /// @nodoc
@@ -97,17 +97,17 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = null,
-    Object? calenderName = null,
+    Object? name = null,
+    Object? roomName = null,
   }) {
     return _then(_$OnboardingStateImpl(
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      calenderName: null == calenderName
-          ? _value.calenderName
-          : calenderName // ignore: cast_nullable_to_non_nullable
+      roomName: null == roomName
+          ? _value.roomName
+          : roomName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -116,21 +116,21 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OnboardingStateImpl implements _OnboardingState {
-  const _$OnboardingStateImpl({this.userName = '', this.calenderName = ''});
+  const _$OnboardingStateImpl({this.name = '', this.roomName = ''});
 
   factory _$OnboardingStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$OnboardingStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final String userName;
+  final String name;
   @override
   @JsonKey()
-  final String calenderName;
+  final String roomName;
 
   @override
   String toString() {
-    return 'OnboardingState(userName: $userName, calenderName: $calenderName)';
+    return 'OnboardingState(name: $name, roomName: $roomName)';
   }
 
   @override
@@ -138,15 +138,14 @@ class _$OnboardingStateImpl implements _OnboardingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnboardingStateImpl &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
-            (identical(other.calenderName, calenderName) ||
-                other.calenderName == calenderName));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.roomName, roomName) ||
+                other.roomName == roomName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userName, calenderName);
+  int get hashCode => Object.hash(runtimeType, name, roomName);
 
   /// Create a copy of OnboardingState
   /// with the given fields replaced by the non-null parameter values.
@@ -166,17 +165,16 @@ class _$OnboardingStateImpl implements _OnboardingState {
 }
 
 abstract class _OnboardingState implements OnboardingState {
-  const factory _OnboardingState(
-      {final String userName,
-      final String calenderName}) = _$OnboardingStateImpl;
+  const factory _OnboardingState({final String name, final String roomName}) =
+      _$OnboardingStateImpl;
 
   factory _OnboardingState.fromJson(Map<String, dynamic> json) =
       _$OnboardingStateImpl.fromJson;
 
   @override
-  String get userName;
+  String get name;
   @override
-  String get calenderName;
+  String get roomName;
 
   /// Create a copy of OnboardingState
   /// with the given fields replaced by the non-null parameter values.

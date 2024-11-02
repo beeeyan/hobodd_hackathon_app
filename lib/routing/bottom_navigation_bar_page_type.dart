@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
-import '../feature/onboarding/onboarding.dart';
+import '../feature/onboarding/presentation/onboarding.dart';
 import '../feature/sample2.dart';
 
 enum BottomNavigationBarPageType {

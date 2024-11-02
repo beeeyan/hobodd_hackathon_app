@@ -9,13 +9,13 @@ part of 'onboarding_state.dart';
 _$OnboardingStateImpl _$$OnboardingStateImplFromJson(
         Map<String, dynamic> json) =>
     _$OnboardingStateImpl(
-      userName: json['userName'] as String? ?? '',
-      calenderName: json['calenderName'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      roomName: json['roomName'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$OnboardingStateImplToJson(
         _$OnboardingStateImpl instance) =>
     <String, dynamic>{
-      'userName': instance.userName,
-      'calenderName': instance.calenderName,
+      'name': instance.name,
+      'roomName': instance.roomName,
     };
