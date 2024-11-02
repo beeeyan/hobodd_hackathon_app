@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'config/firebase/firebase_options.dart';
-import 'config/theme.dart';
+import 'config/theme/theme.dart';
 import 'enum/flavor.dart';
 import 'routing/go_router.dart';
 import 'util/logger.dart';
