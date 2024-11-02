@@ -12,4 +12,7 @@ class FontFamily {
 
   /// Font family: NotoSansJP
   static const String notoSansJP = 'NotoSansJP';
+
+  /// Font family: ShipporiMincho
+  static const String shipporiMincho = 'ShipporiMincho';
 }

@@ -52,3 +52,15 @@ flutter:
           weight: 700
         - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Black.otf
           weight: 900
+    - family: ShipporiMincho
+      fonts:
+        - asset: assets/fonts/Shippori_Mincho/ShipporiMincho-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Shippori_Mincho/ShipporiMincho-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Shippori_Mincho/ShipporiMincho-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Shippori_Mincho/ShipporiMincho-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Shippori_Mincho/ShipporiMincho-ExtraBold.ttf
+          weight: 800

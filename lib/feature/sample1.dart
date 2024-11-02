@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/theme_extension.dart';
+import '../config/theme/theme_extension.dart';
 
 class Sample1Page extends StatelessWidget {
   const Sample1Page({super.key});
