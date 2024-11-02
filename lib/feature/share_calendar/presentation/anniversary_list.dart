@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
-class AnniversaryList extends StatelessWidget {
+import '../../../common_widget/textform/custom_textform.dart';
+import 'anniversary_list_notifier.dart';
+
+class AnniversaryList extends ConsumerWidget {
   const AnniversaryList({super.key});
 
   static const String title = '記念日';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final aniversaryListNotifier = ref.watch(
+      aniversaryListNotifierProvider.notifier,
+    );
     return Center(
       child: Stack(
         children: [
@@ -41,10 +48,24 @@ class AnniversaryList extends StatelessWidget {
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const TextField(
-                          decoration: InputDecoration(
-                            labelText: '記念日名',
-                          ),
+                        CustomTextForm(
+                          labelText: '記念日名',
+                          controller:
+                              aniversaryListNotifier.aniversaryNameController,
+                          onChanged: aniversaryListNotifier.inputAniversaryName,
+                        ),
+                        CustomTextForm(
+                          labelText: '日付',
+                          controller:
+                              aniversaryListNotifier.aniversaryDateController,
+                          onChanged: aniversaryListNotifier.inputAniversaryName,
+                        ),
+                        CustomTextForm(
+                          labelText: 'メッセージ',
+                          controller: aniversaryListNotifier
+                              .aniversaryMessageController,
+                          onChanged:
+                              aniversaryListNotifier.inputAniversaryMessage,
                         ),
                         TextField(
                           decoration: const InputDecoration(
@@ -65,11 +86,6 @@ class AnniversaryList extends StatelessWidget {
                               // 日付が選択された場合の処理
                             });
                           },
-                        ),
-                        const TextField(
-                          decoration: InputDecoration(
-                            labelText: 'メッセージ',
-                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -97,7 +113,7 @@ class AnniversaryList extends StatelessWidget {
   }
 }
 
-class _AnniversaryListTile extends StatelessWidget {
+class _AnniversaryListTile extends ConsumerWidget {
   const _AnniversaryListTile({
     super.key,
     required this.anniversaryName,
@@ -120,7 +136,10 @@ class _AnniversaryListTile extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final aniversaryListNotifier = ref.watch(
+      aniversaryListNotifierProvider.notifier,
+    );
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -149,10 +168,21 @@ class _AnniversaryListTile extends StatelessWidget {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: '記念日名',
-                  ),
+                CustomTextForm(
+                  labelText: '記念日名',
+                  controller: aniversaryListNotifier.aniversaryNameController,
+                  onChanged: aniversaryListNotifier.inputAniversaryName,
+                ),
+                CustomTextForm(
+                  labelText: '日付',
+                  controller: aniversaryListNotifier.aniversaryDateController,
+                  onChanged: aniversaryListNotifier.inputAniversaryName,
+                ),
+                CustomTextForm(
+                  labelText: 'メッセージ',
+                  controller:
+                      aniversaryListNotifier.aniversaryMessageController,
+                  onChanged: aniversaryListNotifier.inputAniversaryMessage,
                 ),
                 TextField(
                   decoration: const InputDecoration(
@@ -164,7 +194,7 @@ class _AnniversaryListTile extends StatelessWidget {
                   ),
                   onTap: () async {
                     // 日付選択ダイアログを表示
-                    await showDatePicker(
+                    final picker = await showDatePicker(
                       context: context,
                       initialDate: DateTime.now(),
                       firstDate: DateTime(2000),
@@ -173,11 +203,6 @@ class _AnniversaryListTile extends StatelessWidget {
                       // 日付が選択された場合の処理
                     });
                   },
-                ),
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: 'メッセージ',
-                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
