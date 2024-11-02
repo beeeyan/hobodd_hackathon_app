@@ -41,6 +41,8 @@ class OnboardingPage extends ConsumerWidget {
                     children: [
                       PrimaryButton(
                         label: '作成',
+                        buttonBackGroundColor:
+                            Theme.of(context).colorScheme.surface,
                         onPressed: () async => PrimaryDialog.show(
                           context: context,
                           title: '共有カレンダーを作成',
@@ -77,6 +79,8 @@ class OnboardingPage extends ConsumerWidget {
                       const Expanded(child: SizedBox()),
                       PrimaryButton(
                         label: '参加',
+                        buttonBackGroundColor:
+                            Theme.of(context).colorScheme.surface,
                         onPressed: () async {
                           await PrimaryDialog.show(
                             context: context,
@@ -92,7 +96,7 @@ class OnboardingPage extends ConsumerWidget {
                                       : null,
                             ),
                             secondWidget: CustomTextForm(
-                              labelText: 'カレンダー名を入力',
+                              labelText: 'カレンダーIDを入力',
                               controller:
                                   onboardingNotifier.calenderNameController,
                               onChanged: onboardingNotifier.inputCalenderName,

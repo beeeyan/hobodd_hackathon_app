@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../../config/theme/theme_extension.dart';
 import '../button/primary.button.dart';
 
 class PrimaryDialog extends StatelessWidget {
@@ -44,6 +45,7 @@ class PrimaryDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).appColors;
     return Dialog(
       child: ConstrainedBox(
         constraints: BoxConstraints(
@@ -53,6 +55,7 @@ class PrimaryDialog extends StatelessWidget {
         child: IntrinsicHeight(
           child: DecoratedBox(
             decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceDim,
               borderRadius: BorderRadius.all(
                 Radius.circular(28.r),
               ),
@@ -67,8 +70,9 @@ class PrimaryDialog extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style:
-                        Theme.of(context).textTheme.headlineSmall!.copyWith(),
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          color: appColors.textMain,
+                        ),
                   ),
                   Gap(18.h),
                   firstWidget,
@@ -80,6 +84,8 @@ class PrimaryDialog extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(top: 24.h),
                       child: PrimaryButton(
+                        buttonBackGroundColor:
+                            Theme.of(context).colorScheme.surfaceDim,
                         label: buttonLabel,
                         onPressed: onPressed,
                       ),

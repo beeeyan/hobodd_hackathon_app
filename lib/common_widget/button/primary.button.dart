@@ -8,12 +8,14 @@ class PrimaryButton extends StatelessWidget {
     this.width = 77,
     this.height = 40,
     this.onPressed,
+    this.buttonBackGroundColor,
   });
 
   final String label;
   final double width;
   final double height;
   final VoidCallback? onPressed;
+  final Color? buttonBackGroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
       height: 40.h,
       child: FilledButton(
         style: OutlinedButton.styleFrom(
-          backgroundColor: colorScheme.surface,
+          backgroundColor: buttonBackGroundColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: colorScheme.primary,
