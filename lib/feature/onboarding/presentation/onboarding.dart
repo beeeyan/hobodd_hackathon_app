@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common_widget/button/primary.button.dart';
 import '../../../common_widget/dialog/primary_dialog.dart';
 import '../../../common_widget/textform/custom_textform.dart';
 import '../../../config/theme/theme_extension.dart';
+import '../../calendar/presentation/calendar.dart';
 import 'onboarding_notifier.dart';
 
 class OnboardingPage extends ConsumerWidget {
@@ -63,7 +65,13 @@ class OnboardingPage extends ConsumerWidget {
                                 : null,
                           ),
                           buttonLabel: '作成',
-                          onPressed: onboardingNotifier.save,
+                          onPressed: () async {
+                            await onboardingNotifier.save();
+
+                            if (context.mounted) {
+                              context.goNamed(CalendarPage.name);
+                            }
+                          },
                         ),
                       ),
                       const Expanded(child: SizedBox()),
