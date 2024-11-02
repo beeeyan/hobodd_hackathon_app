@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
 import '../feature/sample1.dart';
-import '../feature/sample2.dart';
 
 enum BottomNavigationBarPageType {
   calendar(
@@ -16,12 +15,6 @@ enum BottomNavigationBarPageType {
     'サンプル1',
     Icons.bookmark_border_outlined,
     Sample1Page.path,
-  ),
-  sample2(
-    'サンプル2',
-    'サンプル2',
-    Icons.bookmark_border_outlined,
-    Sample2Page.path,
   );
 
   const BottomNavigationBarPageType(
@@ -44,9 +37,6 @@ enum BottomNavigationBarPageType {
     }
     if (path.startsWith(Sample1Page.path)) {
       return BottomNavigationBarPageType.sample1;
-    }
-    if (path.startsWith(Sample2Page.path)) {
-      return BottomNavigationBarPageType.sample2;
     }
     return BottomNavigationBarPageType.calendar;
   }
