@@ -103,6 +103,7 @@ class PushNotificationService {
 
   // 全体配信・Topicでsubscribeする。
   Future<void> subscribeToTopic() async {
+    // TODO(beeeyan): トピック名を変更する
     await messaging.subscribeToTopic('all');
   }
 }
