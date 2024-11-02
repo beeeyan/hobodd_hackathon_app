@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:material_symbols_icons/symbols.dart';
+
+import 'member.dart';
 
 class MemberList extends StatelessWidget {
   const MemberList({super.key});
@@ -117,7 +120,8 @@ class _MemberListTile extends StatelessWidget {
       title: Text(memberName),
       subtitle: Text('$lastActivityにめくりました'),
       onTap: () {
-        // TODO(hott3): メンバー詳細画面に遷移する
+        // TODO(hott3): context.goに修正
+        context.goNamed(MemberPage.name);
       },
     );
   }
