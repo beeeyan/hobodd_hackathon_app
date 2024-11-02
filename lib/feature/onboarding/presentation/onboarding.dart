@@ -50,21 +50,12 @@ class OnboardingPage extends ConsumerWidget {
                             labelText: 'ユーザー名を入力',
                             controller: onboardingNotifier.userNameController,
                             onChanged: onboardingNotifier.inputUserName,
-                            suffixOnPressed:
-                                onboardingNotifier.userNameController.text != ''
-                                    ? onboardingNotifier.clearUserName
-                                    : null,
                           ),
                           secondWidget: CustomTextForm(
                             labelText: 'カレンダー名を入力',
                             controller:
                                 onboardingNotifier.calenderNameController,
                             onChanged: onboardingNotifier.inputCalenderName,
-                            suffixOnPressed: onboardingNotifier
-                                        .calenderNameController.text !=
-                                    ''
-                                ? onboardingNotifier.clearCalenderName
-                                : null,
                           ),
                           buttonLabel: '作成',
                           onPressed: () async {
@@ -89,22 +80,12 @@ class OnboardingPage extends ConsumerWidget {
                               labelText: 'ユーザー名を入力',
                               controller: onboardingNotifier.userNameController,
                               onChanged: onboardingNotifier.inputUserName,
-                              suffixOnPressed:
-                                  onboardingNotifier.userNameController.text !=
-                                          ''
-                                      ? onboardingNotifier.clearUserName
-                                      : null,
                             ),
                             secondWidget: CustomTextForm(
                               labelText: 'カレンダーIDを入力',
                               controller:
                                   onboardingNotifier.calenderNameController,
                               onChanged: onboardingNotifier.inputCalenderName,
-                              suffixOnPressed: onboardingNotifier
-                                          .calenderNameController.text !=
-                                      ''
-                                  ? onboardingNotifier.clearCalenderName
-                                  : null,
                             ),
                             buttonLabel: '参加',
                             onPressed: onboardingNotifier.save,

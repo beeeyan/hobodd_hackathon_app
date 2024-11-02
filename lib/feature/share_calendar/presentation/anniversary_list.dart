@@ -59,21 +59,9 @@ class AnniversaryList extends ConsumerWidget {
                           controller:
                               aniversaryListNotifier.aniversaryDateController,
                           onChanged: aniversaryListNotifier.inputAniversaryName,
-                        ),
-                        CustomTextForm(
-                          labelText: 'メッセージ',
-                          controller: aniversaryListNotifier
-                              .aniversaryMessageController,
-                          onChanged:
-                              aniversaryListNotifier.inputAniversaryMessage,
-                        ),
-                        TextField(
-                          decoration: const InputDecoration(
-                            labelText: '日付',
-                            suffixIcon: Icon(
-                              Symbols.today,
-                              fill: 1,
-                            ),
+                          suffixIcon: const Icon(
+                            Symbols.today,
+                            fill: 1,
                           ),
                           onTap: () async {
                             // 日付選択ダイアログを表示
@@ -86,6 +74,13 @@ class AnniversaryList extends ConsumerWidget {
                               // 日付が選択された場合の処理
                             });
                           },
+                        ),
+                        CustomTextForm(
+                          labelText: 'メッセージ',
+                          controller: aniversaryListNotifier
+                              .aniversaryMessageController,
+                          onChanged:
+                              aniversaryListNotifier.inputAniversaryMessage,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -177,20 +172,9 @@ class _AnniversaryListTile extends ConsumerWidget {
                   labelText: '日付',
                   controller: aniversaryListNotifier.aniversaryDateController,
                   onChanged: aniversaryListNotifier.inputAniversaryName,
-                ),
-                CustomTextForm(
-                  labelText: 'メッセージ',
-                  controller:
-                      aniversaryListNotifier.aniversaryMessageController,
-                  onChanged: aniversaryListNotifier.inputAniversaryMessage,
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                    labelText: '日付',
-                    suffixIcon: Icon(
-                      Symbols.today,
-                      fill: 1,
-                    ),
+                  suffixIcon: const Icon(
+                    Symbols.today,
+                    fill: 1,
                   ),
                   onTap: () async {
                     // 日付選択ダイアログを表示
@@ -203,6 +187,12 @@ class _AnniversaryListTile extends ConsumerWidget {
                       // 日付が選択された場合の処理
                     });
                   },
+                ),
+                CustomTextForm(
+                  labelText: 'メッセージ',
+                  controller:
+                      aniversaryListNotifier.aniversaryMessageController,
+                  onChanged: aniversaryListNotifier.inputAniversaryMessage,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
