@@ -51,6 +51,7 @@ app.*.map.json
 
 # firebase
 # android
+android/app/google-services.jsonno
 
 # ios
 **/ios/GoogleService-Info.plist
