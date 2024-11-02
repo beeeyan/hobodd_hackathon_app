@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -32,8 +33,61 @@ class AnniversaryList extends StatelessWidget {
               elevation: 0,
               mini: true,
               child: const Icon(Symbols.edit),
-              onPressed: () => {
-                // TODO(hott3): 記念日の作成ダイアログの表示
+              onPressed: () async {
+                final dialog = await showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('記念日を作成'),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const TextField(
+                          decoration: InputDecoration(
+                            labelText: '記念日名',
+                          ),
+                        ),
+                        TextField(
+                          decoration: const InputDecoration(
+                            labelText: '日付',
+                            suffixIcon: Icon(
+                              Symbols.today,
+                              fill: 1,
+                            ),
+                          ),
+                          onTap: () async {
+                            // 日付選択ダイアログを表示
+                            final picker = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2000),
+                              lastDate: DateTime(2100),
+                            ).then((value) {
+                              // 日付が選択された場合の処理
+                            });
+                          },
+                        ),
+                        const TextField(
+                          decoration: InputDecoration(
+                            labelText: 'メッセージ',
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                // TODO(hott3): 記念日を作成に必要なデータを渡す
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('作成'),
+                            ),
+                          ],
+                        ),
+                      ].intersperse(Gap(24.h)).toList(),
+                    ),
+                  ),
+                );
+                // TODO(hott3): 記念日を編集する処理を追加
               },
             ),
           ),
@@ -87,8 +141,60 @@ class _AnniversaryListTile extends StatelessWidget {
       ),
       title: Text(anniversaryName),
       subtitle: Text('$formattedAnniversaryDate $message'),
-      onTap: () {
-        // TODO(hott3): 記念日の編集ダイアログを表示する
+      onTap: () async {
+        await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('記念日を編集'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const TextField(
+                  decoration: InputDecoration(
+                    labelText: '記念日名',
+                  ),
+                ),
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: '日付',
+                    suffixIcon: Icon(
+                      Symbols.today,
+                      fill: 1,
+                    ),
+                  ),
+                  onTap: () async {
+                    // 日付選択ダイアログを表示
+                    await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    ).then((value) {
+                      // 日付が選択された場合の処理
+                    });
+                  },
+                ),
+                const TextField(
+                  decoration: InputDecoration(
+                    labelText: 'メッセージ',
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () {
+                        // TODO(hott3): 記念日を編集する処理を追加
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('編集'),
+                    ),
+                  ],
+                ),
+              ].intersperse(Gap(24.h)).toList(),
+            ),
+          ),
+        );
       },
     );
   }
