@@ -17,14 +17,17 @@ class CalendarService {
   final SharedPreferencesRepository _sharedPref;
 
   Future<DateTime> fetchDate() async {
-    final dateTimeNow = DateTime.now();
     final date = await _sharedPref.fetch<String>(
       SharedPreferencesKey.date,
     );
 
     if (date == null) {
-      await saveDate(dateTimeNow);
-      return dateTimeNow;
+      // dateがnull = アプリ初回起動時として現在日時の1日前を返す
+      final yesterday = DateTime.now().add(
+        const Duration(days: -1),
+      );
+      await saveDate(yesterday);
+      return yesterday;
     }
 
     return date.toDateFromString();
