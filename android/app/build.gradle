@@ -67,11 +67,11 @@ android {
         
         // ApplicationIDを環境ごとに変更
         if (dartEnvironmentVariables.FLAVOR != 'prod') {
-            applicationIdSuffix // ".${dartEnvironmentVariables.FLAVOR}"
+            applicationIdSuffix ".${dartEnvironmentVariables.FLAVOR}"
         }
         // アプリ名を環境ごとに変更
-        resValue "string", "app_name", "アプリ名" // +
-                // (dartEnvironmentVariables.FLAVOR == 'prod' ? '' : ".${dartEnvironmentVariables.FLAVOR}")
+        resValue "string", "app_name", "アプリ名" +
+                (dartEnvironmentVariables.FLAVOR == 'prod' ? '' : ".${dartEnvironmentVariables.FLAVOR}")
     }
 
     buildTypes {
