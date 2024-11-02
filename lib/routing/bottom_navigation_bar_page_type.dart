@@ -7,31 +7,26 @@ import '../feature/sample2.dart';
 enum BottomNavigationBarPageType {
   calendar(
     'カレンダー',
-    'カレンダー',
     Icons.today,
     CalendarPage.path,
   ),
   sample1(
-    'サンプル1',
     'サンプル1',
     Icons.bookmark_border_outlined,
     Sample1Page.path,
   ),
   sample2(
     'サンプル2',
-    'サンプル2',
     Icons.bookmark_border_outlined,
     Sample2Page.path,
   );
 
   const BottomNavigationBarPageType(
-    this.title,
     this.bottomNavBarLabel,
     this.icon,
     this.path,
   );
 
-  final String title;
   final String bottomNavBarLabel;
   final IconData icon;
   final String path;
