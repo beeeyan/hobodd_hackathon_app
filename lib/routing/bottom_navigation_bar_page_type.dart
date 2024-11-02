@@ -7,25 +7,21 @@ import '../feature/share_calendar/presentation/share_calendar.dart';
 enum BottomNavigationBarPageType {
   calendar(
     'カレンダー',
-    'カレンダー',
     Icons.today,
     CalendarPage.path,
   ),
   shareCalendar(
-    '共有カレンダー',
     '共有カレンダー',
     Symbols.group,
     ShareCalendarPage.path,
   );
 
   const BottomNavigationBarPageType(
-    this.title,
     this.bottomNavBarLabel,
     this.icon,
     this.path,
   );
 
-  final String title;
   final String bottomNavBarLabel;
   final IconData icon;
   final String path;

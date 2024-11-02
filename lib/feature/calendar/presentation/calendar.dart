@@ -5,9 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intersperse/intersperse.dart';
 
 import '../../../util/formatter/date_time_formatter.dart';
 import '../services/calendar_service.dart';
+import 'widgets/sticker_button.dart';
 
 class CalendarPage extends HookConsumerWidget {
   const CalendarPage({
@@ -24,6 +26,8 @@ class CalendarPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentDate = useState<DateTime?>(date);
     final calendarService = ref.watch(calendarServiceProvider);
+    final selectedEmoji = useState<String?>(null);
+    const emojiList = ['👍', '👎', '🔥', '☔️'];
 
     Future<void> flip(DateTime date) async {
       final nextDate = calendarService.incrementDate(date);
@@ -53,27 +57,79 @@ class CalendarPage extends HookConsumerWidget {
     return PopScope(
       canPop: false,
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              currentDate.value != null
-                  ? currentDate.value!.toMMddSeparatedBySlash()
-                  : '',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            Gap(50.h),
-            Align(
-              child: FilledButton(
-                // MEMO(abe-tk):
-                // 遷移アクションはボタンじゃなくてGestureDetectorの`onHorizontalDragStart`がいいかも
-                onPressed: calendarService.isBeforeDate(currentDate.value)
-                    ? () async => flip(currentDate.value!)
-                    : null,
-                child: const Text('めくる'),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: Column(
+            children: [
+              Gap(160.h),
+              Column(
+                children: [
+                  Text(
+                    currentDate.value != null
+                        ? currentDate.value!.toMMddSeparatedBySlash()
+                        : '',
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                  if (calendarService.isBeforeDate(currentDate.value)) ...[
+                    Gap(24.h),
+                    Text(
+                      'あなたの気分を選択してください',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    Gap(28.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ...List<Widget>.generate(
+                          emojiList.length,
+                          (int index) => StickerButton(
+                            emoji: emojiList[index],
+                            isSelected: selectedEmoji.value == emojiList[index],
+                            onTap:
+                                calendarService.isBeforeDate(currentDate.value)
+                                    ? () async {
+                                        selectedEmoji.value = emojiList[index];
+                                        await flip(currentDate.value!);
+                                      }
+                                    : null,
+                          ),
+                        ).intersperse(Gap(24.h)),
+                      ],
+                    ),
+                  ],
+                  Gap(30.h),
+                ],
               ),
-            ),
-          ],
+              Expanded(
+                child: ListView.separated(
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    if (index == 3) {
+                      return Column(
+                        children: [
+                          Gap(8.h),
+                          Text(
+                            '{その日にちのことわざの本文}',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          Gap(12.h),
+                          Text(
+                            '{その日にちのことわざの説明}',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
+                      );
+                    }
+                    return Text(
+                      '{共有カレンダーに保存されたその日にちの記念日1}\n{記念日1.メッセージ}',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    );
+                  },
+                  separatorBuilder: (context, index) => Gap(12.h),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

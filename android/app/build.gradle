@@ -89,3 +89,15 @@ flutter {
 
 dependencies {
 }
+
+// 環境別ディレクトリに配置した google-services.json を android/app にコピーするタスク
+task selectGoogleServicesJson(type: Copy) {
+    from "src/${dartEnvironmentVariables.FLAVOR}/google-services.json"
+    into './'
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'processDebugGoogleServices' || task.name == 'processReleaseGoogleServices') {
+        task.dependsOn selectGoogleServicesJson
+    }
+}

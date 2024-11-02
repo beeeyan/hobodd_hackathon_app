@@ -6,7 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'config/firebase/firebase_options.dart';
+import 'config/firebase/dev/firebase_options.dart' as dev;
+import 'config/firebase/prod/firebase_options.dart' as prod;
 import 'config/theme/theme.dart';
 import 'enum/flavor.dart';
 import 'routing/go_router.dart';
@@ -20,7 +21,7 @@ Future<void> main() async {
   await Future.wait([
     // firebaseの初期化
     Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+      options: getFirebaseOptions(),
     ),
   ]);
 
@@ -40,6 +41,16 @@ Future<void> main() async {
     ),
   );
 }
+
+FirebaseOptions getFirebaseOptions() {
+  switch (flavor) {
+    case Flavor.dev:
+      return dev.DefaultFirebaseOptions.currentPlatform;
+    case Flavor.prod:
+      return prod.DefaultFirebaseOptions.currentPlatform;
+  }
+}
+
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
