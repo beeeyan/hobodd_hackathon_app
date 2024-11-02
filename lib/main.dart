@@ -4,12 +4,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'config/firebase/firebase_options.dart';
 import 'config/theme.dart';
 import 'enum/flavor.dart';
 import 'routing/go_router.dart';
 import 'util/logger.dart';
+import 'util/shared_preferences/shared_preferences_repository.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,9 +27,16 @@ Future<void> main() async {
   // Flavor を取得し Logging
   logger.i('FLAVOR : ${flavor.name}');
 
+  final sharedPreferences = await SharedPreferences.getInstance();
+
   runApp(
-    const ProviderScope(
-      child: MyApp(),
+    ProviderScope(
+      overrides: [
+        sharedPreferencesRepositoryProvider.overrideWithValue(
+          SharedPreferencesRepository(sharedPreferences),
+        ),
+      ],
+      child: const MyApp(),
     ),
   );
 }
