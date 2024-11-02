@@ -17,12 +17,28 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
       width: 77.w,
       height: 40.h,
       child: FilledButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: colorScheme.surface,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: colorScheme.primary,
+              width: 1.w,
+            ),
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
         onPressed: onPressed,
-        child: Text(label),
+        child: Text(
+          label,
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                color: colorScheme.primary,
+              ),
+        ),
       ),
     );
   }

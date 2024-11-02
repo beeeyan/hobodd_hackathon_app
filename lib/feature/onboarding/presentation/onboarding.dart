@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../common_widget/button/primary.button.dart';
-import '../../common_widget/dialog/primary_dialog.dart';
-import '../../common_widget/textform/custom_textform.dart';
-import '../../config/theme/theme_extension.dart';
+import '../../../common_widget/button/primary.button.dart';
+import '../../../common_widget/dialog/primary_dialog.dart';
+import '../../../common_widget/textform/custom_textform.dart';
+import '../../../config/theme/theme_extension.dart';
 import 'onboarding_notifier.dart';
 
 class OnboardingPage extends ConsumerWidget {
@@ -26,7 +26,6 @@ class OnboardingPage extends ConsumerWidget {
           children: [
             SizedBox(
               width: 208.h,
-              height: 210.w,
               child: Column(
                 children: [
                   Text(
