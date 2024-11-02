@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "378854545436",
+    "project_id": "dd-daily-calendar",
+    "storage_bucket": "dd-daily-calendar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378854545436:android:e891104b7ef2c86c2ca7d9",
+        "android_client_info": {
+          "package_name": "work.sendfun.hackathon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5zwuKDrM86akdThYR2YMEEki14FTas3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

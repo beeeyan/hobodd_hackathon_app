@@ -1,13 +1,26 @@
+import 'dart:async';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'config/firebase/firebase_options.dart';
 import 'config/theme.dart';
 import 'enum/flavor.dart';
 import 'routing/go_router.dart';
 import 'util/logger.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Future.wait([
+    // firebaseの初期化
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
+  ]);
+
   // Flavor を取得し Logging
   logger.i('FLAVOR : ${flavor.name}');
 
