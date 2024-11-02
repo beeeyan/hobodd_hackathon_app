@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../config/theme/theme_extension.dart';
+import 'anniversary_list.dart';
+import 'member_list.dart';
 
 class ShareCalendarPage extends StatelessWidget {
   const ShareCalendarPage({super.key});
@@ -12,24 +14,36 @@ class ShareCalendarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).appColors;
     final appTextStyles = Theme.of(context).appTextStyles;
-    return Center(
-      child: Column(
-        children: [
-          // MEMO(abe-tk): ThemeDataのtextThemeの使用例
-          Text(
-            'Sample 1',
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: appColors.textMain,
-                ),
+
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            // TODO(hott3): ルーム名を表示する
+            '{ルーム名}',
           ),
-          // MEMO(abe-tk): ThemeExtensionの使用例
-          Text(
-            'Sample 1',
-            style: appTextStyles.textMain.copyWith(
-              color: appColors.textMain,
+          bottom: const TabBar(
+            tabs: <Widget>[
+              Tab(
+                icon: Text(MemberList.title),
+              ),
+              Tab(
+                icon: Text(AnniversaryList.title),
+              ),
+            ],
+          ),
+        ),
+        body: const TabBarView(
+          children: <Widget>[
+            Center(
+              child: MemberList(),
             ),
-          ),
-        ],
+            Center(
+              child: AnniversaryList(),
+            ),
+          ],
+        ),
       ),
     );
   }

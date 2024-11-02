@@ -13,10 +13,12 @@ class RootPage extends StatelessWidget {
     final pageType = _calculatePageType(context);
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(pageType.title),
-      ),
+      appBar: (pageType != BottomNavigationBarPageType.shareCalendar)
+          ? AppBar(
+              centerTitle: true,
+              title: Text(pageType.title),
+            )
+          : null,
       body: SafeArea(child: child),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: pageType.index,
