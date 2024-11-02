@@ -9,7 +9,8 @@ import '../../../common_widget/dialog/primary_dialog.dart';
 import '../../../common_widget/textform/custom_textform.dart';
 import '../../../config/theme/theme_extension.dart';
 import '../../calendar/presentation/calendar.dart';
-import 'onboarding_notifier.dart';
+import 'create_user_notifier.dart';
+import 'join_room_notifier.dart';
 
 class OnboardingPage extends ConsumerWidget {
   const OnboardingPage({super.key});
@@ -20,7 +21,9 @@ class OnboardingPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appColors = Theme.of(context).appColors;
-    final onboardingNotifier = ref.watch(onboardingNotifierProvider.notifier);
+    final createUserNotifier = ref.watch(createUserNotifierProvider.notifier);
+    final joinRoomNotifier = ref.watch(joinRoomNotifierProvider.notifier);
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -48,18 +51,17 @@ class OnboardingPage extends ConsumerWidget {
                           title: '共有カレンダーを作成',
                           firstWidget: CustomTextForm(
                             labelText: 'ユーザー名を入力',
-                            controller: onboardingNotifier.userNameController,
-                            onChanged: onboardingNotifier.inputUserName,
+                            controller: createUserNotifier.userNameController,
+                            onChanged: createUserNotifier.inputUserName,
                           ),
                           secondWidget: CustomTextForm(
                             labelText: 'カレンダー名を入力',
-                            controller:
-                                onboardingNotifier.calenderNameController,
-                            onChanged: onboardingNotifier.inputCalenderName,
+                            controller: joinRoomNotifier.userNameController,
+                            onChanged: createUserNotifier.inputRoomName,
                           ),
                           buttonLabel: '作成',
                           onPressed: () async {
-                            await onboardingNotifier.save();
+                            await createUserNotifier.create();
 
                             if (context.mounted) {
                               context.goNamed(CalendarPage.name);
@@ -78,17 +80,22 @@ class OnboardingPage extends ConsumerWidget {
                             title: '共有カレンダーを作成',
                             firstWidget: CustomTextForm(
                               labelText: 'ユーザー名を入力',
-                              controller: onboardingNotifier.userNameController,
-                              onChanged: onboardingNotifier.inputUserName,
+                              controller: createUserNotifier.userNameController,
+                              onChanged: createUserNotifier.inputUserName,
                             ),
                             secondWidget: CustomTextForm(
                               labelText: 'カレンダーIDを入力',
-                              controller:
-                                  onboardingNotifier.calenderNameController,
-                              onChanged: onboardingNotifier.inputCalenderName,
+                              controller: joinRoomNotifier.roomIdController,
+                              onChanged: joinRoomNotifier.inputRoomName,
                             ),
                             buttonLabel: '参加',
-                            onPressed: onboardingNotifier.save,
+                            onPressed: () async {
+                              await joinRoomNotifier.join();
+
+                              if (context.mounted) {
+                                context.goNamed(CalendarPage.name);
+                              }
+                            },
                           );
                         },
                       ),
