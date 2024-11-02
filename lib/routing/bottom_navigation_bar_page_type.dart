@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../feature/home/home.dart';
+import '../feature/calendar/presentation/calendar.dart';
 import '../feature/sample1.dart';
 import '../feature/sample2.dart';
 
 enum BottomNavigationBarPageType {
-  home(
-    'ホーム',
-    'ホーム',
-    Icons.home,
-    MyHomePage.path,
+  calendar(
+    'カレンダー',
+    'カレンダー',
+    Icons.today,
+    CalendarPage.path,
   ),
   sample1(
     'サンプル1',
@@ -39,8 +39,8 @@ enum BottomNavigationBarPageType {
   static BottomNavigationBarPageType pageTypeByPath(String path) {
     // 詳細画面に遷移してもボトムナビゲーションを表示させる場合を考慮して
     // startsWithで処理する。
-    if (path.startsWith(MyHomePage.path)) {
-      return BottomNavigationBarPageType.home;
+    if (path.startsWith(CalendarPage.path)) {
+      return BottomNavigationBarPageType.calendar;
     }
     if (path.startsWith(Sample1Page.path)) {
       return BottomNavigationBarPageType.sample1;
@@ -48,6 +48,6 @@ enum BottomNavigationBarPageType {
     if (path.startsWith(Sample2Page.path)) {
       return BottomNavigationBarPageType.sample2;
     }
-    return BottomNavigationBarPageType.home;
+    return BottomNavigationBarPageType.calendar;
   }
 }
