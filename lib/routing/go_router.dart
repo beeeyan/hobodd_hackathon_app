@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
+import '../feature/onboarding/presentation/onboarding.dart';
 import '../feature/root.dart';
 import '../feature/share_calendar/presentation/member.dart';
 import '../feature/share_calendar/presentation/share_calendar.dart';
@@ -23,7 +24,7 @@ final goRouterProvider = Provider<GoRouter>(
     final shellNavigatorKey = ref.watch(shellNavigatorKeyProvider);
     return GoRouter(
       navigatorKey: rootNavigatorKey,
-      initialLocation: CalendarPage.path,
+      initialLocation: OnboardingPage.path,
       routes: [
         ShellRoute(
           navigatorKey: shellNavigatorKey,
@@ -55,6 +56,13 @@ final goRouterProvider = Provider<GoRouter>(
               ],
             ),
           ],
+        ),
+        GoRoute(
+          path: OnboardingPage.path,
+          name: OnboardingPage.name,
+          pageBuilder: (context, state) => buildNoAnimationTransition(
+            const OnboardingPage(),
+          ),
         ),
       ],
     );

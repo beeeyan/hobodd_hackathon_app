@@ -12,7 +12,7 @@ part of 'base_response_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BaseResponseData _$BaseResponseDataFromJson(Map<String, dynamic> json) {
   return _BaseResponseData.fromJson(json);
@@ -22,8 +22,12 @@ BaseResponseData _$BaseResponseDataFromJson(Map<String, dynamic> json) {
 mixin _$BaseResponseData {
   Map<String, dynamic> get main => throw _privateConstructorUsedError;
 
+  /// Serializes this BaseResponseData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BaseResponseData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BaseResponseDataCopyWith<BaseResponseData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$BaseResponseDataCopyWithImpl<$Res, $Val extends BaseResponseData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BaseResponseData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -62,30 +68,32 @@ class _$BaseResponseDataCopyWithImpl<$Res, $Val extends BaseResponseData>
 }
 
 /// @nodoc
-abstract class _$$_BaseResponseDataCopyWith<$Res>
+abstract class _$$BaseResponseDataImplCopyWith<$Res>
     implements $BaseResponseDataCopyWith<$Res> {
-  factory _$$_BaseResponseDataCopyWith(
-          _$_BaseResponseData value, $Res Function(_$_BaseResponseData) then) =
-      __$$_BaseResponseDataCopyWithImpl<$Res>;
+  factory _$$BaseResponseDataImplCopyWith(_$BaseResponseDataImpl value,
+          $Res Function(_$BaseResponseDataImpl) then) =
+      __$$BaseResponseDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, dynamic> main});
 }
 
 /// @nodoc
-class __$$_BaseResponseDataCopyWithImpl<$Res>
-    extends _$BaseResponseDataCopyWithImpl<$Res, _$_BaseResponseData>
-    implements _$$_BaseResponseDataCopyWith<$Res> {
-  __$$_BaseResponseDataCopyWithImpl(
-      _$_BaseResponseData _value, $Res Function(_$_BaseResponseData) _then)
+class __$$BaseResponseDataImplCopyWithImpl<$Res>
+    extends _$BaseResponseDataCopyWithImpl<$Res, _$BaseResponseDataImpl>
+    implements _$$BaseResponseDataImplCopyWith<$Res> {
+  __$$BaseResponseDataImplCopyWithImpl(_$BaseResponseDataImpl _value,
+      $Res Function(_$BaseResponseDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BaseResponseData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? main = null,
   }) {
-    return _then(_$_BaseResponseData(
+    return _then(_$BaseResponseDataImpl(
       main: null == main
           ? _value._main
           : main // ignore: cast_nullable_to_non_nullable
@@ -96,12 +104,12 @@ class __$$_BaseResponseDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BaseResponseData implements _BaseResponseData {
-  const _$_BaseResponseData({final Map<String, dynamic> main = emptyMap})
+class _$BaseResponseDataImpl implements _BaseResponseData {
+  const _$BaseResponseDataImpl({final Map<String, dynamic> main = emptyMap})
       : _main = main;
 
-  factory _$_BaseResponseData.fromJson(Map<String, dynamic> json) =>
-      _$$_BaseResponseDataFromJson(json);
+  factory _$BaseResponseDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BaseResponseDataImplFromJson(json);
 
   final Map<String, dynamic> _main;
   @override
@@ -118,27 +126,30 @@ class _$_BaseResponseData implements _BaseResponseData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BaseResponseData &&
+            other is _$BaseResponseDataImpl &&
             const DeepCollectionEquality().equals(other._main, _main));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_main));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseResponseData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BaseResponseDataCopyWith<_$_BaseResponseData> get copyWith =>
-      __$$_BaseResponseDataCopyWithImpl<_$_BaseResponseData>(this, _$identity);
+  _$$BaseResponseDataImplCopyWith<_$BaseResponseDataImpl> get copyWith =>
+      __$$BaseResponseDataImplCopyWithImpl<_$BaseResponseDataImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BaseResponseDataToJson(
+    return _$$BaseResponseDataImplToJson(
       this,
     );
   }
@@ -146,15 +157,18 @@ class _$_BaseResponseData implements _BaseResponseData {
 
 abstract class _BaseResponseData implements BaseResponseData {
   const factory _BaseResponseData({final Map<String, dynamic> main}) =
-      _$_BaseResponseData;
+      _$BaseResponseDataImpl;
 
   factory _BaseResponseData.fromJson(Map<String, dynamic> json) =
-      _$_BaseResponseData.fromJson;
+      _$BaseResponseDataImpl.fromJson;
 
   @override
   Map<String, dynamic> get main;
+
+  /// Create a copy of BaseResponseData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_BaseResponseDataCopyWith<_$_BaseResponseData> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BaseResponseDataImplCopyWith<_$BaseResponseDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
