@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
-import '../feature/onboarding/presentation/onboarding.dart';
-import '../feature/sample2.dart';
+import '../feature/share_calendar/presentation/share_calendar.dart';
 
 enum BottomNavigationBarPageType {
   calendar(
@@ -10,15 +10,10 @@ enum BottomNavigationBarPageType {
     Icons.today,
     CalendarPage.path,
   ),
-  sample1(
-    'サンプル1',
-    Icons.bookmark_border_outlined,
-    OnboardingPage.path,
-  ),
-  sample2(
-    'サンプル2',
-    Icons.bookmark_border_outlined,
-    Sample2Page.path,
+  shareCalendar(
+    '共有カレンダー',
+    Symbols.group,
+    ShareCalendarPage.path,
   );
 
   const BottomNavigationBarPageType(
@@ -37,11 +32,8 @@ enum BottomNavigationBarPageType {
     if (path.startsWith(CalendarPage.path)) {
       return BottomNavigationBarPageType.calendar;
     }
-    if (path.startsWith(OnboardingPage.path)) {
-      return BottomNavigationBarPageType.sample1;
-    }
-    if (path.startsWith(Sample2Page.path)) {
-      return BottomNavigationBarPageType.sample2;
+    if (path.startsWith(ShareCalendarPage.path)) {
+      return BottomNavigationBarPageType.shareCalendar;
     }
     return BottomNavigationBarPageType.calendar;
   }

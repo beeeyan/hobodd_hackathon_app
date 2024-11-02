@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextForm extends StatelessWidget {
   const CustomTextForm({
@@ -8,13 +7,15 @@ class CustomTextForm extends StatelessWidget {
     required this.labelText,
     required this.controller,
     this.onChanged,
-    this.suffixOnPressed,
+    this.suffixIcon,
+    this.onTap,
   });
 
   final String labelText;
   final TextEditingController controller;
   final void Function(String)? onChanged;
-  final void Function()? suffixOnPressed;
+  final Widget? suffixIcon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +27,9 @@ class CustomTextForm extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: Theme.of(context).textTheme.bodySmall,
-        contentPadding: EdgeInsets.symmetric(
-          vertical: 4.h,
-          horizontal: 16.w,
-        ),
-        suffixIcon: IconButton(
-          icon: const Icon(Icons.clear),
-          onPressed: suffixOnPressed,
-        ),
+        suffixIcon: suffixIcon,
       ),
+      onTap: onTap,
     );
   }
 }
