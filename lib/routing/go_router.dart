@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../feature/home/home.dart';
+import '../feature/onboarding/onboarding.dart';
 import '../feature/root.dart';
-import '../feature/sample1.dart';
 import '../feature/sample2.dart';
 import 'no_animation_transition.dart';
 
@@ -22,7 +22,7 @@ final goRouterProvider = Provider<GoRouter>(
     final shellNavigatorKey = ref.watch(shellNavigatorKeyProvider);
     return GoRouter(
       navigatorKey: rootNavigatorKey,
-      initialLocation: MyHomePage.path,
+      initialLocation: OnboardingPage.path,
       routes: [
         ShellRoute(
           navigatorKey: shellNavigatorKey,
@@ -36,13 +36,6 @@ final goRouterProvider = Provider<GoRouter>(
               ),
             ),
             GoRoute(
-              path: Sample1Page.path,
-              name: Sample1Page.name,
-              pageBuilder: (context, state) => buildNoAnimationTransition(
-                const Sample1Page(),
-              ),
-            ),
-            GoRoute(
               path: Sample2Page.path,
               name: Sample2Page.name,
               pageBuilder: (context, state) => buildNoAnimationTransition(
@@ -50,6 +43,13 @@ final goRouterProvider = Provider<GoRouter>(
               ),
             ),
           ],
+        ),
+        GoRoute(
+          path: OnboardingPage.path,
+          name: OnboardingPage.name,
+          pageBuilder: (context, state) => buildNoAnimationTransition(
+            const OnboardingPage(),
+          ),
         ),
       ],
     );

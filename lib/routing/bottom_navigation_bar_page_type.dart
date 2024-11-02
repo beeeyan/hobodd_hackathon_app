@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../feature/home/home.dart';
-import '../feature/sample1.dart';
+import '../feature/onboarding/onboarding.dart';
 import '../feature/sample2.dart';
 
 enum BottomNavigationBarPageType {
@@ -15,7 +15,7 @@ enum BottomNavigationBarPageType {
     'サンプル1',
     'サンプル1',
     Icons.bookmark_border_outlined,
-    Sample1Page.path,
+    OnboardingPage.path,
   ),
   sample2(
     'サンプル2',
@@ -42,7 +42,7 @@ enum BottomNavigationBarPageType {
     if (path.startsWith(MyHomePage.path)) {
       return BottomNavigationBarPageType.home;
     }
-    if (path.startsWith(Sample1Page.path)) {
+    if (path.startsWith(OnboardingPage.path)) {
       return BottomNavigationBarPageType.sample1;
     }
     if (path.startsWith(Sample2Page.path)) {
