@@ -127,7 +127,7 @@ class _AnniversaryListTile extends ConsumerWidget {
     );
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final dateYyyyMmDd = anniversaryDate.toMMddSeparatedBySlashLong();
+    final dateYyyyMmDd = anniversaryDate.toYyyyMMddSeparatedBySlash();
 
     return ListTile(
       leading: Container(

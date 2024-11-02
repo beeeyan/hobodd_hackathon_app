@@ -7,7 +7,7 @@ extension DateTimeFormatter on DateTime {
     return formatted;
   }
 
-  String toMMddSeparatedBySlashLong() {
+  String toYyyyMMddSeparatedBySlash() {
     final formatter = DateFormat('yyyy/MM/dd');
     final formatted = formatter.format(this);
     return formatted;
