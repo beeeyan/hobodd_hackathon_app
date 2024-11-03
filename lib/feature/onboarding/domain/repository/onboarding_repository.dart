@@ -32,7 +32,7 @@ class OnboardingRepository {
       'https://hackathon_api.hirano-i.workers.dev/user/room',
       data: {
         'name': data.name,
-        'roomName': data.roomId,
+        'roomId': data.roomId,
       },
     );
     return response.when<JoinRoomResponseData>(
