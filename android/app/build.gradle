@@ -64,13 +64,13 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        
+
         // ApplicationIDを環境ごとに変更
         if (dartEnvironmentVariables.FLAVOR != 'prod') {
             applicationIdSuffix ".${dartEnvironmentVariables.FLAVOR}"
         }
         // アプリ名を環境ごとに変更
-        resValue "string", "app_name", "アプリ名" +
+        resValue "string", "app_name", "めくってほっと" +
                 (dartEnvironmentVariables.FLAVOR == 'prod' ? '' : ".${dartEnvironmentVariables.FLAVOR}")
     }
 
