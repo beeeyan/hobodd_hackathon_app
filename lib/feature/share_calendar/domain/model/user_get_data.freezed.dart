@@ -20,9 +20,8 @@ UserGetData _$UserGetDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserGetData {
-  String get userId => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
   String get sticker => throw _privateConstructorUsedError;
   String get clickedAt => throw _privateConstructorUsedError;
 
@@ -42,12 +41,7 @@ abstract class $UserGetDataCopyWith<$Res> {
           UserGetData value, $Res Function(UserGetData) then) =
       _$UserGetDataCopyWithImpl<$Res, UserGetData>;
   @useResult
-  $Res call(
-      {String userId,
-      String username,
-      DateTime createdAt,
-      String sticker,
-      String clickedAt});
+  $Res call({int userId, String username, String sticker, String clickedAt});
 }
 
 /// @nodoc
@@ -67,7 +61,6 @@ class _$UserGetDataCopyWithImpl<$Res, $Val extends UserGetData>
   $Res call({
     Object? userId = null,
     Object? username = null,
-    Object? createdAt = null,
     Object? sticker = null,
     Object? clickedAt = null,
   }) {
@@ -75,15 +68,11 @@ class _$UserGetDataCopyWithImpl<$Res, $Val extends UserGetData>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       sticker: null == sticker
           ? _value.sticker
           : sticker // ignore: cast_nullable_to_non_nullable
@@ -104,12 +93,7 @@ abstract class _$$UserGetDataImplCopyWith<$Res>
       __$$UserGetDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String userId,
-      String username,
-      DateTime createdAt,
-      String sticker,
-      String clickedAt});
+  $Res call({int userId, String username, String sticker, String clickedAt});
 }
 
 /// @nodoc
@@ -127,7 +111,6 @@ class __$$UserGetDataImplCopyWithImpl<$Res>
   $Res call({
     Object? userId = null,
     Object? username = null,
-    Object? createdAt = null,
     Object? sticker = null,
     Object? clickedAt = null,
   }) {
@@ -135,15 +118,11 @@ class __$$UserGetDataImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       sticker: null == sticker
           ? _value.sticker
           : sticker // ignore: cast_nullable_to_non_nullable
@@ -162,7 +141,6 @@ class _$UserGetDataImpl implements _UserGetData {
   const _$UserGetDataImpl(
       {required this.userId,
       required this.username,
-      required this.createdAt,
       required this.sticker,
       required this.clickedAt});
 
@@ -170,11 +148,9 @@ class _$UserGetDataImpl implements _UserGetData {
       _$$UserGetDataImplFromJson(json);
 
   @override
-  final String userId;
+  final int userId;
   @override
   final String username;
-  @override
-  final DateTime createdAt;
   @override
   final String sticker;
   @override
@@ -182,7 +158,7 @@ class _$UserGetDataImpl implements _UserGetData {
 
   @override
   String toString() {
-    return 'UserGetData(userId: $userId, username: $username, createdAt: $createdAt, sticker: $sticker, clickedAt: $clickedAt)';
+    return 'UserGetData(userId: $userId, username: $username, sticker: $sticker, clickedAt: $clickedAt)';
   }
 
   @override
@@ -193,8 +169,6 @@ class _$UserGetDataImpl implements _UserGetData {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
             (identical(other.sticker, sticker) || other.sticker == sticker) &&
             (identical(other.clickedAt, clickedAt) ||
                 other.clickedAt == clickedAt));
@@ -203,7 +177,7 @@ class _$UserGetDataImpl implements _UserGetData {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userId, username, createdAt, sticker, clickedAt);
+      Object.hash(runtimeType, userId, username, sticker, clickedAt);
 
   /// Create a copy of UserGetData
   /// with the given fields replaced by the non-null parameter values.
@@ -223,9 +197,8 @@ class _$UserGetDataImpl implements _UserGetData {
 
 abstract class _UserGetData implements UserGetData {
   const factory _UserGetData(
-      {required final String userId,
+      {required final int userId,
       required final String username,
-      required final DateTime createdAt,
       required final String sticker,
       required final String clickedAt}) = _$UserGetDataImpl;
 
@@ -233,11 +206,9 @@ abstract class _UserGetData implements UserGetData {
       _$UserGetDataImpl.fromJson;
 
   @override
-  String get userId;
+  int get userId;
   @override
   String get username;
-  @override
-  DateTime get createdAt;
   @override
   String get sticker;
   @override

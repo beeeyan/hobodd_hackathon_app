@@ -12,10 +12,7 @@ class LogRepositoryImpl {
     required String userId,
   }) async {
     final response = await apiClient.get(
-      '$baseUrl/log/:user_id',
-      queryParameters: <String, dynamic>{
-        'user_id': userId,
-      },
+      '$baseUrl/log/$userId',
     );
     return response.when(
       success: (data) {

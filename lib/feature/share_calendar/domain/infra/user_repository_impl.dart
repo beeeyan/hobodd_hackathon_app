@@ -19,10 +19,7 @@ class UserRepositoryImpl {
     required String roomId,
   }) async {
     final response = await apiClient.get(
-      '$baseUrl/user/:room_id',
-      queryParameters: <String, dynamic>{
-        'room_id': roomId,
-      },
+      '$baseUrl/user/$roomId',
     );
     return response.when(
       success: (data) {

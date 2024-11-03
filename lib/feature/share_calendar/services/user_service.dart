@@ -25,13 +25,13 @@ class UserService {
   final SharedPreferencesRepository _sharedPref;
 
   Future<List<UserGetData>> fetchUsers() async {
-    final userId = await _sharedPref.fetch<int>(
-      SharedPreferencesKey.userId,
+    final roomId = await _sharedPref.fetch<String>(
+      SharedPreferencesKey.roomId,
     );
-    if (userId == null) {
-      throw Exception('userId is null');
+    if (roomId == null) {
+      throw Exception('roomId is null');
     }
-    return UserRepositoryImpl(_client).get(roomId: userId.toString());
+    return UserRepositoryImpl(_client).get(roomId: roomId);
   }
 
   Future<List<Log>> fetchLogs({
