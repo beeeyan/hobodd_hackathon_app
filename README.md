@@ -129,8 +129,7 @@ lib/
 
 ## DB
 
-
-
+<img width="836" alt="image" src="https://github.com/user-attachments/assets/892114e6-69d2-4857-af96-5eeaaac7e1e8">
 
 ## 実装時の工夫
 
