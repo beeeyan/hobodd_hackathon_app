@@ -7,6 +7,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
+import '../../../util/converter/date_time_converter.dart';
+import '../../../util/formatter/date_time_formatter.dart';
 import '../../user/user_provider.dart';
 import 'member.dart';
 import 'member_list_notifier.dart';
@@ -27,9 +29,12 @@ class MemberList extends ConsumerWidget {
             ...List<Widget>.generate(
               data.length,
               (index) => _MemberListTile(
-                userId: data[index].userId,
+                userId: data[index].userId.toString(),
                 memberName: data[index].username,
-                lastActivity: data[index].clickedAt,
+                lastActivity: data[index]
+                    .clickedAt
+                    .toDateFromString()
+                    .toMMddSeparatedBySlash(),
                 lastCondition: data[index].sticker,
               ),
             ).intersperse(const Divider()),
@@ -138,7 +143,7 @@ class _MemberListTile extends StatelessWidget {
         ),
       ),
       title: Text(memberName),
-      subtitle: Text('$lastActivityにめくりました'),
+      subtitle: Text('$lastActivity にめくりました'),
       onTap: () {
         // TODO(hott3): context.goに修正
         context.goNamed(
