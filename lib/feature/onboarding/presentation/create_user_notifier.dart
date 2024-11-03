@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../domain/infra/onboarding_repository_provider.dart';
+import '../../../util/shared_preferences/shared_preferences_repository.dart';
 import '../domain/model/create_user_post_data.dart';
+import '../domain/repository/onboarding_repository_provider.dart';
 import 'state/create_user_state.dart';
 
 final createUserNotifierProvider =
@@ -13,6 +14,9 @@ final createUserNotifierProvider =
 class OnboardingNotifier extends AutoDisposeNotifier<CreateUserState> {
   final userNameController = TextEditingController();
   final roomIdController = TextEditingController();
+
+  SharedPreferencesRepository get sharedPreferencesRepository =>
+      ref.read(sharedPreferencesRepositoryProvider);
 
   @override
   CreateUserState build() {
@@ -51,6 +55,27 @@ class OnboardingNotifier extends AutoDisposeNotifier<CreateUserState> {
       name: state.name,
       roomName: state.roomName,
     );
-    await ref.read(onboardingRepositoryProvider).createUserPost(data: data);
+    final result =
+        await ref.read(onboardingRepositoryProvider).createUserPost(data: data);
+
+    await sharedPreferencesRepository.save<int>(
+      SharedPreferencesKey.userId,
+      result.userId,
+    );
+
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.userName,
+      state.name,
+    );
+
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.roomId,
+      result.roomId,
+    );
+
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.userName,
+      state.roomName,
+    );
   }
 }

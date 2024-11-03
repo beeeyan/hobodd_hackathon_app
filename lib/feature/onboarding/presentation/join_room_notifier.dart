@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../domain/infra/onboarding_repository_provider.dart';
-import '../domain/model/create_user_post_data.dart';
+import '../../../util/shared_preferences/shared_preferences_repository.dart';
 import '../domain/model/join_room_post_data.dart';
+import '../domain/repository/onboarding_repository_provider.dart';
 import 'state/join_room_state.dart';
 
 final joinRoomNotifierProvider =
@@ -14,6 +14,9 @@ final joinRoomNotifierProvider =
 class OnboardingNotifier extends AutoDisposeNotifier<JoinRoomState> {
   final userNameController = TextEditingController();
   final roomIdController = TextEditingController();
+
+  SharedPreferencesRepository get sharedPreferencesRepository =>
+      ref.read(sharedPreferencesRepositoryProvider);
 
   @override
   JoinRoomState build() {
@@ -47,19 +50,28 @@ class OnboardingNotifier extends AutoDisposeNotifier<JoinRoomState> {
     state = state.copyWith(roomId: '');
   }
 
-  Future<void> create() async {
-    final data = CreateUserPostData(
-      name: state.name,
-      roomName: state.roomId,
-    );
-    await ref.read(onboardingRepositoryProvider).createUserPost(data: data);
-  }
-
   Future<void> join() async {
     final data = JoinRoomPostData(
       name: state.name,
       roomId: state.roomId,
     );
-    await ref.read(onboardingRepositoryProvider).joinRoomPost(data: data);
+    final result =
+        await ref.read(onboardingRepositoryProvider).joinRoomPost(data: data);
+    await sharedPreferencesRepository.save<int>(
+      SharedPreferencesKey.userId,
+      result.userId,
+    );
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.userName,
+      state.name,
+    );
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.roomId,
+      state.roomId,
+    );
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.roomName,
+      result.roomName,
+    );
   }
 }

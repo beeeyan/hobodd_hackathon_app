@@ -4,6 +4,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 enum SharedPreferencesKey {
   // ひめくりカレンダーの日付
   date,
+  // TODO(beeeyan): 本来はセキュアストレージなどに入れるべき
+  // ユーザーID
+  userId,
+  // ユーザー名
+  userName,
+  // ルームID
+  roomId,
+  // ルーム名
+  roomName,
 }
 
 final sharedPreferencesRepositoryProvider =
