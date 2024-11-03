@@ -1,7 +1,13 @@
 import 'package:intl/intl.dart';
 
 extension DateTimeFormatter on DateTime {
-  String toMMddSeparatedBySlashLong() {
+  String toMMddHHmmSeparatedBySlash() {
+    final formatter = DateFormat('MM/dd HH:mm');
+    final formatted = formatter.format(this);
+    return formatted;
+  }
+
+  String toYyyyMMddSeparatedBySlash() {
     final formatter = DateFormat('yyyy/MM/dd');
     final formatted = formatter.format(this);
     return formatted;

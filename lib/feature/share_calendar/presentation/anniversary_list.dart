@@ -6,6 +6,7 @@ import 'package:intersperse/intersperse.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../common_widget/textform/custom_textform.dart';
+import '../../../util/converter/date_time_converter.dart';
 import '../../../util/formatter/date_time_formatter.dart';
 import 'anniversary_list_notifier.dart';
 
@@ -72,7 +73,14 @@ class AnniversaryList extends ConsumerWidget {
                               firstDate: DateTime(2000),
                               lastDate: DateTime(2100),
                             ).then((value) {
-                              // 日付が選択された場合の処理
+                              if (value == null) {
+                                return;
+                              }
+                              aniversaryListNotifier.aniversaryDateController
+                                  .text = value.toYyyyMMddSeparatedBySlash();
+                              aniversaryListNotifier.inputAniversaryDate(
+                                value.toStringFromDate(),
+                              );
                             });
                           },
                         ),
@@ -87,7 +95,8 @@ class AnniversaryList extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             OutlinedButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                await aniversaryListNotifier.save();
                                 Navigator.of(context).pop();
                               },
                               child: const Text('作成'),
@@ -127,7 +136,7 @@ class _AnniversaryListTile extends ConsumerWidget {
     );
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final dateYyyyMmDd = anniversaryDate.toMMddSeparatedBySlashLong();
+    final dateYyyyMmDd = anniversaryDate.toYyyyMMddSeparatedBySlash();
 
     return ListTile(
       leading: Container(
