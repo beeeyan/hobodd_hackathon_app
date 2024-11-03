@@ -53,19 +53,11 @@ class OnboardingPage extends ConsumerWidget {
                             labelText: 'ユーザー名を入力',
                             controller: createUserNotifier.userNameController,
                             onChanged: createUserNotifier.inputUserName,
-                            suffixOnPressed:
-                                createUserNotifier.userNameController.text != ''
-                                    ? createUserNotifier.clearUserName
-                                    : null,
                           ),
                           secondWidget: CustomTextForm(
                             labelText: 'カレンダー名を入力',
                             controller: joinRoomNotifier.userNameController,
                             onChanged: createUserNotifier.inputRoomName,
-                            suffixOnPressed:
-                                joinRoomNotifier.roomIdController.text != ''
-                                    ? createUserNotifier.clearRoomName
-                                    : null,
                           ),
                           buttonLabel: '作成',
                           onPressed: () async {
@@ -90,20 +82,11 @@ class OnboardingPage extends ConsumerWidget {
                               labelText: 'ユーザー名を入力',
                               controller: createUserNotifier.userNameController,
                               onChanged: createUserNotifier.inputUserName,
-                              suffixOnPressed:
-                                  createUserNotifier.userNameController.text !=
-                                          ''
-                                      ? createUserNotifier.clearUserName
-                                      : null,
                             ),
                             secondWidget: CustomTextForm(
                               labelText: 'カレンダーIDを入力',
                               controller: joinRoomNotifier.roomIdController,
                               onChanged: joinRoomNotifier.inputRoomName,
-                              suffixOnPressed:
-                                  joinRoomNotifier.roomIdController.text != ''
-                                      ? createUserNotifier.clearRoomName
-                                      : null,
                             ),
                             buttonLabel: '参加',
                             onPressed: () async {
