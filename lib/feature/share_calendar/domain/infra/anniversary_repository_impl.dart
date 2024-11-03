@@ -1,14 +1,6 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../../../api/api_client/api_client.dart';
 import '../../../../api/base_url.dart';
 import '../model/anniversary_post_data.dart';
-
-final anniversaryRepositoryProvider = Provider<AnniversaryRepositoryImpl>(
-  (ref) => AnniversaryRepositoryImpl(
-    ref.watch(apiClientProvider),
-  ),
-);
 
 class AnniversaryRepositoryImpl {
   AnniversaryRepositoryImpl(this.apiClient);

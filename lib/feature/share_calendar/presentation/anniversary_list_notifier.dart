@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../model/aniversary_list_post_data.dart';
+import '../services/anniversary_service.dart';
 import 'state/aniversary_list_state.dart';
 
 final aniversaryListNotifierProvider =
@@ -37,7 +38,13 @@ class AniversaryListNotifier extends AutoDisposeNotifier<AniversaryListState> {
       aniversaryDate: state.aniversaryDate,
       aniversaryMessage: state.aniversaryMessage,
     );
-    // TODO(hott3): Repositoryの実装が必要
-    // await ref.read(aniversaryRepositoryProvider).post(data: data);
+    await ref.read(anniversaryServiceProvider).create(
+          date: data.aniversaryDate,
+          name: data.aniversaryName,
+          message: data.aniversaryMessage,
+        );
+    aniversaryDateController.clear();
+    aniversaryNameController.clear();
+    aniversaryMessageController.clear();
   }
 }

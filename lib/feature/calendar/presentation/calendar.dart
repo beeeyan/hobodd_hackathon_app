@@ -7,7 +7,9 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intersperse/intersperse.dart';
 
+import '../../../util/converter/date_time_converter.dart';
 import '../../../util/formatter/date_time_formatter.dart';
+import '../../share_calendar/domain/model/calendar_get_data.dart';
 import '../services/calendar_service.dart';
 import 'widgets/sticker_button.dart';
 
@@ -25,12 +27,17 @@ class CalendarPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentDate = useState<DateTime?>(date);
+    final currentDateData = useState<List<CalendarGetData>?>(null);
     final calendarService = ref.watch(calendarServiceProvider);
     final selectedEmoji = useState<String?>(null);
     const emojiList = ['👍', '👎', '🔥', '☔️'];
 
     Future<void> flip(DateTime date) async {
       final nextDate = calendarService.incrementDate(date);
+      await calendarService.createLog(
+        clickedDate: nextDate.toStringFromDate(),
+        status: selectedEmoji.value,
+      );
       await calendarService.saveDate(nextDate);
       if (context.mounted) {
         await context.pushNamed(
@@ -44,10 +51,16 @@ class CalendarPage extends HookConsumerWidget {
       () {
         SchedulerBinding.instance.addPostFrameCallback((_) async {
           if (date != null) {
+            currentDateData.value = await calendarService.fetchCalendar(
+              lastClickedDate: date!,
+            );
             return;
           }
           final fetchDate = await calendarService.fetchDate();
           currentDate.value = fetchDate;
+          currentDateData.value = await calendarService.fetchCalendar(
+            lastClickedDate: fetchDate,
+          );
         });
         return () {};
       },
@@ -102,28 +115,28 @@ class CalendarPage extends HookConsumerWidget {
               ),
               Expanded(
                 child: ListView.separated(
-                  itemCount: 4,
+                  itemCount: currentDateData.value?.length ?? 0,
                   itemBuilder: (context, index) {
-                    if (index == 3) {
-                      return Column(
-                        children: [
-                          Gap(8.h),
-                          Text(
-                            '{その日にちのことわざの本文}',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          Gap(12.h),
-                          Text(
-                            '{その日にちのことわざの説明}',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        ],
-                      );
-                    }
-                    return Text(
-                      '{共有カレンダーに保存されたその日にちの記念日1}\n{記念日1.メッセージ}',
-                      style: Theme.of(context).textTheme.bodyMedium,
+                    // if (index == currentDateData.value!.length - 1) {
+                    return Column(
+                      children: [
+                        Gap(8.h),
+                        Text(
+                          currentDateData.value![index].title,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Gap(12.h),
+                        Text(
+                          currentDateData.value![index].message,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
                     );
+                    // }
+                    // return Text(
+                    //   '{共有カレンダーに保存されたその日にちの記念日1}\n{記念日1.メッセージ}',
+                    //   style: Theme.of(context).textTheme.bodyMedium,
+                    // );
                   },
                   separatorBuilder: (context, index) => Gap(12.h),
                 ),

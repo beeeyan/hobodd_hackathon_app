@@ -6,6 +6,7 @@ part 'user_get_data.g.dart';
 @freezed
 class UserGetData with _$UserGetData {
   const factory UserGetData({
+    required String userId,
     required String username,
     required DateTime createdAt,
     required String sticker,

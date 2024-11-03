@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../util/shared_preferences/shared_preferences_repository.dart';
+import '../../calendar/domain/infra/onboarding_repository_provider.dart';
 import '../domain/model/join_room_post_data.dart';
-import '../domain/repository/onboarding_repository_provider.dart';
 import 'state/join_room_state.dart';
 
 final joinRoomNotifierProvider =

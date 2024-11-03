@@ -61,7 +61,9 @@ final goRouterProvider = Provider<GoRouter>(
                 GoRoute(
                   path: MemberPage.path,
                   name: MemberPage.name,
-                  builder: (context, state) => const MemberPage(),
+                  builder: (context, state) => MemberPage(
+                    userId: state.extra! as String,
+                  ),
                 ),
               ],
             ),
