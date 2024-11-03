@@ -7,9 +7,9 @@ part of 'log.dart';
 // **************************************************************************
 
 _$LogImpl _$$LogImplFromJson(Map<String, dynamic> json) => _$LogImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       clickedAt: DateTime.parse(json['clickedAt'] as String),
-      userId: json['userId'] as String,
+      userId: (json['userId'] as num).toInt(),
       status: json['status'] as String?,
       body: json['body'] as String?,
       createdAt: DateTime.parse(json['createdAt'] as String),

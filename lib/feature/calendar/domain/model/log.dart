@@ -6,9 +6,9 @@ part 'log.g.dart';
 @freezed
 class Log with _$Log {
   const factory Log({
-    required String id,
+    required int id,
     required DateTime clickedAt,
-    required String userId,
+    required int userId,
     String? status,
     String? body,
     required DateTime createdAt,

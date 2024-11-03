@@ -20,9 +20,9 @@ Log _$LogFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Log {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   DateTime get clickedAt => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   String? get body => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -42,9 +42,9 @@ abstract class $LogCopyWith<$Res> {
       _$LogCopyWithImpl<$Res, Log>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       DateTime clickedAt,
-      String userId,
+      int userId,
       String? status,
       String? body,
       DateTime createdAt});
@@ -75,7 +75,7 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       clickedAt: null == clickedAt
           ? _value.clickedAt
           : clickedAt // ignore: cast_nullable_to_non_nullable
@@ -83,7 +83,7 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -107,9 +107,9 @@ abstract class _$$LogImplCopyWith<$Res> implements $LogCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       DateTime clickedAt,
-      String userId,
+      int userId,
       String? status,
       String? body,
       DateTime createdAt});
@@ -137,7 +137,7 @@ class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       clickedAt: null == clickedAt
           ? _value.clickedAt
           : clickedAt // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -177,11 +177,11 @@ class _$LogImpl implements _Log {
       _$$LogImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final DateTime clickedAt;
   @override
-  final String userId;
+  final int userId;
   @override
   final String? status;
   @override
@@ -232,9 +232,9 @@ class _$LogImpl implements _Log {
 
 abstract class _Log implements Log {
   const factory _Log(
-      {required final String id,
+      {required final int id,
       required final DateTime clickedAt,
-      required final String userId,
+      required final int userId,
       final String? status,
       final String? body,
       required final DateTime createdAt}) = _$LogImpl;
@@ -242,11 +242,11 @@ abstract class _Log implements Log {
   factory _Log.fromJson(Map<String, dynamic> json) = _$LogImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   DateTime get clickedAt;
   @override
-  String get userId;
+  int get userId;
   @override
   String? get status;
   @override
