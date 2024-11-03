@@ -20,6 +20,7 @@ UserGetData _$UserGetDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserGetData {
+  String get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get sticker => throw _privateConstructorUsedError;
@@ -42,7 +43,11 @@ abstract class $UserGetDataCopyWith<$Res> {
       _$UserGetDataCopyWithImpl<$Res, UserGetData>;
   @useResult
   $Res call(
-      {String username, DateTime createdAt, String sticker, String clickedAt});
+      {String userId,
+      String username,
+      DateTime createdAt,
+      String sticker,
+      String clickedAt});
 }
 
 /// @nodoc
@@ -60,12 +65,17 @@ class _$UserGetDataCopyWithImpl<$Res, $Val extends UserGetData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userId = null,
     Object? username = null,
     Object? createdAt = null,
     Object? sticker = null,
     Object? clickedAt = null,
   }) {
     return _then(_value.copyWith(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -95,7 +105,11 @@ abstract class _$$UserGetDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String username, DateTime createdAt, String sticker, String clickedAt});
+      {String userId,
+      String username,
+      DateTime createdAt,
+      String sticker,
+      String clickedAt});
 }
 
 /// @nodoc
@@ -111,12 +125,17 @@ class __$$UserGetDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userId = null,
     Object? username = null,
     Object? createdAt = null,
     Object? sticker = null,
     Object? clickedAt = null,
   }) {
     return _then(_$UserGetDataImpl(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -141,7 +160,8 @@ class __$$UserGetDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserGetDataImpl implements _UserGetData {
   const _$UserGetDataImpl(
-      {required this.username,
+      {required this.userId,
+      required this.username,
       required this.createdAt,
       required this.sticker,
       required this.clickedAt});
@@ -149,6 +169,8 @@ class _$UserGetDataImpl implements _UserGetData {
   factory _$UserGetDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserGetDataImplFromJson(json);
 
+  @override
+  final String userId;
   @override
   final String username;
   @override
@@ -160,7 +182,7 @@ class _$UserGetDataImpl implements _UserGetData {
 
   @override
   String toString() {
-    return 'UserGetData(username: $username, createdAt: $createdAt, sticker: $sticker, clickedAt: $clickedAt)';
+    return 'UserGetData(userId: $userId, username: $username, createdAt: $createdAt, sticker: $sticker, clickedAt: $clickedAt)';
   }
 
   @override
@@ -168,6 +190,7 @@ class _$UserGetDataImpl implements _UserGetData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserGetDataImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.createdAt, createdAt) ||
@@ -180,7 +203,7 @@ class _$UserGetDataImpl implements _UserGetData {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, username, createdAt, sticker, clickedAt);
+      Object.hash(runtimeType, userId, username, createdAt, sticker, clickedAt);
 
   /// Create a copy of UserGetData
   /// with the given fields replaced by the non-null parameter values.
@@ -200,7 +223,8 @@ class _$UserGetDataImpl implements _UserGetData {
 
 abstract class _UserGetData implements UserGetData {
   const factory _UserGetData(
-      {required final String username,
+      {required final String userId,
+      required final String username,
       required final DateTime createdAt,
       required final String sticker,
       required final String clickedAt}) = _$UserGetDataImpl;
@@ -208,6 +232,8 @@ abstract class _UserGetData implements UserGetData {
   factory _UserGetData.fromJson(Map<String, dynamic> json) =
       _$UserGetDataImpl.fromJson;
 
+  @override
+  String get userId;
   @override
   String get username;
   @override

@@ -1,15 +1,7 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../../../api/api_client/api_client.dart';
 import '../../../../api/base_url.dart';
 import '../../../../util/logger.dart';
 import '../model/log.dart';
-
-final logRepositoryProvider = Provider<LogRepositoryImpl>(
-  (ref) => LogRepositoryImpl(
-    ref.watch(apiClientProvider),
-  ),
-);
 
 class LogRepositoryImpl {
   LogRepositoryImpl(this.apiClient);
