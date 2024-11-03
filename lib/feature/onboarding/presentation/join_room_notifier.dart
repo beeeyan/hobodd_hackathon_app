@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../domain/infra/onboarding_repository_provider.dart';
-import '../domain/model/create_user_post_data.dart';
 import '../domain/model/join_room_post_data.dart';
 import 'state/join_room_state.dart';
 
@@ -45,14 +44,6 @@ class OnboardingNotifier extends AutoDisposeNotifier<JoinRoomState> {
   void clearRoomId() {
     roomIdController.clear();
     state = state.copyWith(roomId: '');
-  }
-
-  Future<void> create() async {
-    final data = CreateUserPostData(
-      name: state.name,
-      roomName: state.roomId,
-    );
-    await ref.read(onboardingRepositoryProvider).createUserPost(data: data);
   }
 
   Future<void> join() async {
