@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
+import '../../user/user_provider.dart';
 import 'member.dart';
 import 'member_list_notifier.dart';
 
@@ -18,6 +19,7 @@ class MemberList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final memberList = ref.watch(memberListProvider);
+    final userProviderAsync = ref.watch(userProvider);
     return Center(
       child: memberList.when(
         data: (data) => ListView(
@@ -38,7 +40,15 @@ class MemberList extends ConsumerWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('ルームID : {ルームID}'),
+                      userProviderAsync.when(
+                        data: (data) {
+                          return Text(
+                            data.roomId ?? '',
+                          );
+                        },
+                        error: (error, stackTrace) => Text('Error: $error'),
+                        loading: () => const Text('Loading...'),
+                      ),
                       Gap(4.w),
                       const Icon(
                         Symbols.content_copy,
