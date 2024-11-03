@@ -3,9 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../feature/calendar/presentation/calendar.dart';
+import '../feature/onboarding/presentation/onboarding.dart';
 import '../feature/root.dart';
-import '../feature/sample1.dart';
-import '../feature/sample2.dart';
+import '../feature/share_calendar/presentation/member.dart';
+import '../feature/share_calendar/presentation/share_calendar.dart';
+import '../feature/user/user_provider.dart';
 import 'no_animation_transition.dart';
 import 'turn_page_animation_transition.dart';
 
@@ -24,6 +26,15 @@ final goRouterProvider = Provider<GoRouter>(
     return GoRouter(
       navigatorKey: rootNavigatorKey,
       initialLocation: CalendarPage.path,
+      redirect: (context, state) async {
+        try {
+          await ref.read(userProvider.future);
+        } on Exception catch (_) {
+          // エラーとなった場合はOnboardingPageに遷移
+          return OnboardingPage.path;
+        }
+        return null;
+      },
       routes: [
         ShellRoute(
           navigatorKey: shellNavigatorKey,
@@ -41,20 +52,27 @@ final goRouterProvider = Provider<GoRouter>(
                     ),
             ),
             GoRoute(
-              path: Sample1Page.path,
-              name: Sample1Page.name,
+              path: ShareCalendarPage.path,
+              name: ShareCalendarPage.name,
               pageBuilder: (context, state) => buildNoAnimationTransition(
-                const Sample1Page(),
+                const ShareCalendarPage(),
               ),
-            ),
-            GoRoute(
-              path: Sample2Page.path,
-              name: Sample2Page.name,
-              pageBuilder: (context, state) => buildNoAnimationTransition(
-                const Sample2Page(),
-              ),
+              routes: [
+                GoRoute(
+                  path: MemberPage.path,
+                  name: MemberPage.name,
+                  builder: (context, state) => const MemberPage(),
+                ),
+              ],
             ),
           ],
+        ),
+        GoRoute(
+          path: OnboardingPage.path,
+          name: OnboardingPage.name,
+          pageBuilder: (context, state) => buildNoAnimationTransition(
+            const OnboardingPage(),
+          ),
         ),
       ],
     );
