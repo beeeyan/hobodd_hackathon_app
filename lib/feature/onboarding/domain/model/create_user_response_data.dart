@@ -6,7 +6,7 @@ part 'create_user_response_data.g.dart';
 @freezed
 class CreateUserResponseData with _$CreateUserResponseData {
   const factory CreateUserResponseData({
-    @JsonKey(name: 'user_id') required String userId,
+    @JsonKey(name: 'user_id') required int userId,
     @JsonKey(name: 'room_id') required String roomId,
   }) = _CreateUserResponseData;
 

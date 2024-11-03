@@ -50,7 +50,6 @@ class OnboardingNotifier extends AutoDisposeNotifier<JoinRoomState> {
     state = state.copyWith(roomId: '');
   }
 
-  // TODO(beeeyan): エラーのハンドリング
   Future<void> join() async {
     final data = JoinRoomPostData(
       name: state.name,
@@ -58,13 +57,21 @@ class OnboardingNotifier extends AutoDisposeNotifier<JoinRoomState> {
     );
     final result =
         await ref.read(onboardingRepositoryProvider).joinRoomPost(data: data);
-    await sharedPreferencesRepository.save<String>(
+    await sharedPreferencesRepository.save<int>(
       SharedPreferencesKey.userId,
       result.userId,
     );
     await sharedPreferencesRepository.save<String>(
       SharedPreferencesKey.userName,
       state.name,
+    );
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.roomId,
+      state.roomId,
+    );
+    await sharedPreferencesRepository.save<String>(
+      SharedPreferencesKey.roomName,
+      result.roomName,
     );
   }
 }

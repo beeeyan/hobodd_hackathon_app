@@ -58,7 +58,7 @@ class OnboardingNotifier extends AutoDisposeNotifier<CreateUserState> {
     final result =
         await ref.read(onboardingRepositoryProvider).createUserPost(data: data);
 
-    await sharedPreferencesRepository.save<String>(
+    await sharedPreferencesRepository.save<int>(
       SharedPreferencesKey.userId,
       result.userId,
     );

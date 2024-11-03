@@ -20,7 +20,7 @@ UserState _$UserStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserState {
-  String get userId => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get roomId => throw _privateConstructorUsedError;
   String? get roomName => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
-  $Res call({String userId, String name, String? roomId, String? roomName});
+  $Res call({int userId, String name, String? roomId, String? roomName});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$UserStateImplCopyWith<$Res>
       __$$UserStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String name, String? roomId, String? roomName});
+  $Res call({int userId, String name, String? roomId, String? roomName});
 }
 
 /// @nodoc
@@ -117,7 +117,7 @@ class __$$UserStateImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ class _$UserStateImpl implements _UserState {
       _$$UserStateImplFromJson(json);
 
   @override
-  final String userId;
+  final int userId;
   @override
   @JsonKey()
   final String name;
@@ -192,7 +192,7 @@ class _$UserStateImpl implements _UserState {
 
 abstract class _UserState implements UserState {
   const factory _UserState(
-      {required final String userId,
+      {required final int userId,
       final String name,
       final String? roomId,
       final String? roomName}) = _$UserStateImpl;
@@ -201,7 +201,7 @@ abstract class _UserState implements UserState {
       _$UserStateImpl.fromJson;
 
   @override
-  String get userId;
+  int get userId;
   @override
   String get name;
   @override

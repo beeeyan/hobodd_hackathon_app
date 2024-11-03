@@ -22,7 +22,7 @@ CreateUserResponseData _$CreateUserResponseDataFromJson(
 /// @nodoc
 mixin _$CreateUserResponseData {
   @JsonKey(name: 'user_id')
-  String get userId => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'room_id')
   String get roomId => throw _privateConstructorUsedError;
 
@@ -43,7 +43,7 @@ abstract class $CreateUserResponseDataCopyWith<$Res> {
       _$CreateUserResponseDataCopyWithImpl<$Res, CreateUserResponseData>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'user_id') String userId,
+      {@JsonKey(name: 'user_id') int userId,
       @JsonKey(name: 'room_id') String roomId});
 }
 
@@ -70,7 +70,7 @@ class _$CreateUserResponseDataCopyWithImpl<$Res,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       roomId: null == roomId
           ? _value.roomId
           : roomId // ignore: cast_nullable_to_non_nullable
@@ -89,7 +89,7 @@ abstract class _$$CreateUserResponseDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'user_id') String userId,
+      {@JsonKey(name: 'user_id') int userId,
       @JsonKey(name: 'room_id') String roomId});
 }
 
@@ -115,7 +115,7 @@ class __$$CreateUserResponseDataImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       roomId: null == roomId
           ? _value.roomId
           : roomId // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ class _$CreateUserResponseDataImpl implements _CreateUserResponseData {
 
   @override
   @JsonKey(name: 'user_id')
-  final String userId;
+  final int userId;
   @override
   @JsonKey(name: 'room_id')
   final String roomId;
@@ -178,7 +178,7 @@ class _$CreateUserResponseDataImpl implements _CreateUserResponseData {
 
 abstract class _CreateUserResponseData implements CreateUserResponseData {
   const factory _CreateUserResponseData(
-          {@JsonKey(name: 'user_id') required final String userId,
+          {@JsonKey(name: 'user_id') required final int userId,
           @JsonKey(name: 'room_id') required final String roomId}) =
       _$CreateUserResponseDataImpl;
 
@@ -187,7 +187,7 @@ abstract class _CreateUserResponseData implements CreateUserResponseData {
 
   @override
   @JsonKey(name: 'user_id')
-  String get userId;
+  int get userId;
   @override
   @JsonKey(name: 'room_id')
   String get roomId;

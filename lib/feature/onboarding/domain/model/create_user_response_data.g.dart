@@ -9,7 +9,7 @@ part of 'create_user_response_data.dart';
 _$CreateUserResponseDataImpl _$$CreateUserResponseDataImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateUserResponseDataImpl(
-      userId: json['user_id'] as String,
+      userId: (json['user_id'] as num).toInt(),
       roomId: json['room_id'] as String,
     );
 

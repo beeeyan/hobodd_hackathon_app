@@ -21,7 +21,9 @@ JoinRoomResponseData _$JoinRoomResponseDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$JoinRoomResponseData {
   @JsonKey(name: 'user_id')
-  String get userId => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'room_name')
+  String get roomName => throw _privateConstructorUsedError;
 
   /// Serializes this JoinRoomResponseData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +41,9 @@ abstract class $JoinRoomResponseDataCopyWith<$Res> {
           $Res Function(JoinRoomResponseData) then) =
       _$JoinRoomResponseDataCopyWithImpl<$Res, JoinRoomResponseData>;
   @useResult
-  $Res call({@JsonKey(name: 'user_id') String userId});
+  $Res call(
+      {@JsonKey(name: 'user_id') int userId,
+      @JsonKey(name: 'room_name') String roomName});
 }
 
 /// @nodoc
@@ -59,11 +63,16 @@ class _$JoinRoomResponseDataCopyWithImpl<$Res,
   @override
   $Res call({
     Object? userId = null,
+    Object? roomName = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      roomName: null == roomName
+          ? _value.roomName
+          : roomName // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -77,7 +86,9 @@ abstract class _$$JoinRoomResponseDataImplCopyWith<$Res>
       __$$JoinRoomResponseDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'user_id') String userId});
+  $Res call(
+      {@JsonKey(name: 'user_id') int userId,
+      @JsonKey(name: 'room_name') String roomName});
 }
 
 /// @nodoc
@@ -94,11 +105,16 @@ class __$$JoinRoomResponseDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? roomName = null,
   }) {
     return _then(_$JoinRoomResponseDataImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      roomName: null == roomName
+          ? _value.roomName
+          : roomName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -108,18 +124,22 @@ class __$$JoinRoomResponseDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$JoinRoomResponseDataImpl implements _JoinRoomResponseData {
   const _$JoinRoomResponseDataImpl(
-      {@JsonKey(name: 'user_id') required this.userId});
+      {@JsonKey(name: 'user_id') required this.userId,
+      @JsonKey(name: 'room_name') required this.roomName});
 
   factory _$JoinRoomResponseDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$JoinRoomResponseDataImplFromJson(json);
 
   @override
   @JsonKey(name: 'user_id')
-  final String userId;
+  final int userId;
+  @override
+  @JsonKey(name: 'room_name')
+  final String roomName;
 
   @override
   String toString() {
-    return 'JoinRoomResponseData(userId: $userId)';
+    return 'JoinRoomResponseData(userId: $userId, roomName: $roomName)';
   }
 
   @override
@@ -127,12 +147,14 @@ class _$JoinRoomResponseDataImpl implements _JoinRoomResponseData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JoinRoomResponseDataImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.roomName, roomName) ||
+                other.roomName == roomName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode => Object.hash(runtimeType, userId, roomName);
 
   /// Create a copy of JoinRoomResponseData
   /// with the given fields replaced by the non-null parameter values.
@@ -154,7 +176,8 @@ class _$JoinRoomResponseDataImpl implements _JoinRoomResponseData {
 
 abstract class _JoinRoomResponseData implements JoinRoomResponseData {
   const factory _JoinRoomResponseData(
-          {@JsonKey(name: 'user_id') required final String userId}) =
+          {@JsonKey(name: 'user_id') required final int userId,
+          @JsonKey(name: 'room_name') required final String roomName}) =
       _$JoinRoomResponseDataImpl;
 
   factory _JoinRoomResponseData.fromJson(Map<String, dynamic> json) =
@@ -162,7 +185,10 @@ abstract class _JoinRoomResponseData implements JoinRoomResponseData {
 
   @override
   @JsonKey(name: 'user_id')
-  String get userId;
+  int get userId;
+  @override
+  @JsonKey(name: 'room_name')
+  String get roomName;
 
   /// Create a copy of JoinRoomResponseData
   /// with the given fields replaced by the non-null parameter values.

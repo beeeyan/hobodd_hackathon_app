@@ -8,7 +8,7 @@ part of 'user_state.dart';
 
 _$UserStateImpl _$$UserStateImplFromJson(Map<String, dynamic> json) =>
     _$UserStateImpl(
-      userId: json['userId'] as String,
+      userId: (json['userId'] as num).toInt(),
       name: json['name'] as String? ?? '',
       roomId: json['roomId'] as String?,
       roomName: json['roomName'] as String?,
