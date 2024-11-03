@@ -56,7 +56,7 @@ class CalendarService {
     final dateTimeNow = DateTime.now();
 
     // MEMO(abe-tk): デバック用にコメントアウト
-    // return date != null;
+    return date != null;
 
     return date != null &&
         date.isBefore(dateTimeNow) &&
