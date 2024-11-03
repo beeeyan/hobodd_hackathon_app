@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
@@ -15,7 +17,14 @@ final dioProvider = Provider<Dio>((ref) {
 
 Dio customizeDio() {
   return Dio()
-    ..httpClientAdapter = IOHttpClientAdapter()
+    ..httpClientAdapter = IOHttpClientAdapter(
+      createHttpClient: () {
+        final client = HttpClient()
+          ..badCertificateCallback =
+              (X509Certificate cert, String host, int port) => true;
+        return client;
+      },
+    )
     ..options = BaseOptions(
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
