@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -55,12 +56,18 @@ class AnniversaryList extends ConsumerWidget {
                           controller:
                               aniversaryListNotifier.aniversaryNameController,
                           onChanged: aniversaryListNotifier.inputAniversaryName,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(30),
+                          ],
                         ),
                         CustomTextForm(
                           labelText: '日付',
                           controller:
                               aniversaryListNotifier.aniversaryDateController,
                           onChanged: aniversaryListNotifier.inputAniversaryName,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(30),
+                          ],
                           suffixIcon: const Icon(
                             Symbols.today,
                             fill: 1,
@@ -90,6 +97,9 @@ class AnniversaryList extends ConsumerWidget {
                               .aniversaryMessageController,
                           onChanged:
                               aniversaryListNotifier.inputAniversaryMessage,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(30),
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
