@@ -9,6 +9,7 @@ class CustomTextForm extends StatelessWidget {
     this.onChanged,
     this.suffixIcon,
     this.onTap,
+    this.inputFormatters,
   });
 
   final String labelText;
@@ -16,14 +17,13 @@ class CustomTextForm extends StatelessWidget {
   final void Function(String)? onChanged;
   final Widget? suffixIcon;
   final void Function()? onTap;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      inputFormatters: [
-        LengthLimitingTextInputFormatter(10),
-      ],
+      inputFormatters: inputFormatters,
       onChanged: onChanged,
       decoration: InputDecoration(
         labelText: labelText,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -53,11 +54,17 @@ class OnboardingPage extends ConsumerWidget {
                             labelText: 'ユーザー名を入力',
                             controller: createUserNotifier.userNameController,
                             onChanged: createUserNotifier.inputUserName,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(30),
+                            ],
                           ),
                           secondWidget: CustomTextForm(
                             labelText: 'カレンダー名を入力',
                             controller: joinRoomNotifier.userNameController,
                             onChanged: createUserNotifier.inputRoomName,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(30),
+                            ],
                           ),
                           buttonLabel: '作成',
                           onPressed: () async {
@@ -82,11 +89,17 @@ class OnboardingPage extends ConsumerWidget {
                               labelText: 'ユーザー名を入力',
                               controller: createUserNotifier.userNameController,
                               onChanged: createUserNotifier.inputUserName,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(30),
+                              ],
                             ),
                             secondWidget: CustomTextForm(
                               labelText: 'カレンダーIDを入力',
                               controller: joinRoomNotifier.roomIdController,
                               onChanged: joinRoomNotifier.inputRoomName,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(100),
+                              ],
                             ),
                             buttonLabel: '参加',
                             onPressed: () async {
