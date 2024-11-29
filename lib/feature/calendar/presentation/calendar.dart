@@ -32,6 +32,8 @@ class CalendarPage extends HookConsumerWidget {
     final selectedEmoji = useState<String?>(null);
     const emojiList = ['👍', '👎', '🔥', '☔️'];
 
+    // TODO(hott3): 座標計算をするhooksstateを作成する
+
     Future<void> flip(DateTime date) async {
       final nextDate = calendarService.incrementDate(date);
       await calendarService.createLog(
@@ -74,6 +76,33 @@ class CalendarPage extends HookConsumerWidget {
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             children: [
+              GestureDetector(
+                onLongPressStart: (details) {
+                  print('start');
+                  print(details.localPosition);
+                  // 長押し開始時にスタート地点の座標を取得
+                },
+                onHorizontalDragUpdate: (details) {
+                  print(details.localPosition);
+                  // 長押ししている間に指を動かした時に座標を取得更新続ける
+                  // MEMO(hott3): シミュレーターのスワイプ操作とPC上のドラッグ/フリップ/スワイプ操作で利用できるプロパティが異なるかもしれない
+                },
+                onLongPressEnd: (details) {
+                  print('end');
+                  print(details.localPosition);
+                  // 長押し終了時にエンド地点の座標を取得
+                  // 最終的にスタート地点とエンド地点の座標を比較して50以上の時にflipを実行する
+
+                  // flip(currentDate.value!);
+                },
+                child: Container(
+                  height: 200.w,
+                  width: 200.w,
+                  // alignment: Alignment.center,
+                  color: Colors.green,
+                  child: const Text('data'),
+                ),
+              ),
               Gap(160.h),
               Column(
                 children: [
@@ -102,6 +131,7 @@ class CalendarPage extends HookConsumerWidget {
                                 calendarService.isBeforeDate(currentDate.value)
                                     ? () async {
                                         selectedEmoji.value = emojiList[index];
+                                        // めくるアニメーションはここ
                                         await flip(currentDate.value!);
                                       }
                                     : null,
